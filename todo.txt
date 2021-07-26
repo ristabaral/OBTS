@@ -1,0 +1,131 @@
+[+] Register a user
+[+] Login a user
+[+] Who am I
+[+] Logout the user
+
+[+] Add new Bus
+[+] Update a Bus
+[+] Get all Buses
+[+] Get single Bus
+[+] Delete a Bus
+
+[+] Assign Bus to operator
+[+] View buses assigned to an operator
+[+] Delete bus from assigned list of an operator
+
+[+] Add new Schedule
+[+] Update a Schedule
+[+] Get all Schedules
+[+] Get single Schedule
+[+] Delete a Schedule
+
+[+] Add new Checkpoint
+[+] Update a Checkpoint
+[+] Get all Checkpoints
+[+] Get single Checkpoint
+[+] Delete a Checkpoint
+
+[+] assign checkpoint to Schedule
+[+] assign bus to Schedule
+[+] assign Schedule to Operator 
+
+[+] Add new Booker
+[+] Update a Booker
+[+] Get all Bookers
+[+] Get single Booker
+[+] Delete a Booker
+
+[+] Add new Passenger   (receive_ticket in SLTB)
+[+] Update a Passenger
+[+] Get all Passenger
+[+] Get single Passenger
+[+] Delete a Passenger
+
+[+] Add new Conductor
+[+] Update a Conductor
+[+] Get all Conductor
+[+] Get single Conductor
+[+] Delete a Conductor
+
+[+] assign Conductor to Bus     //performed while creating a Conductor
+
+//Tickets are not thought of yet
+[+] Add new Ticket
+[+] Update a Ticket
+[+] Get all Tickets
+[+] Get single Ticket
+[+] Delete a Ticket
+
+[+] Add new Booking
+[+] Update a Booking
+[+] Get all Bookings
+[+] Get single Booking
+[+] Delete a Booking
+
+[+] SEATS
+
+[+] Dashboard Views
+[+] Client side Views
+
+[+] Assign checkpoint to Schedules
+[+] After a bus being Scheduled, it must now showup in another Schedule
+[+] Update Seats status after Booking
+[+] Assign Seats to Bus
+[+] Implement Esewa Payment gateway 
+[+] Print tickets   ------------- styling of ticket left
+[+] Bookings monitoring in admin Dashboard
+
+// YET TO WORK
+
+[+] Realtime bus seat status Update using socket or time hack
+[+] Flash messages
+[+] View Reports of all Bookings
+[+] View Reports of all passengers
+[+] View Reports of all bookers
+
+[+] Paypal payment gateway integration 
+[+] Ticket Cancellation system 
+
+[+] View Page of every model
+[+] Style the seats layout 
+
+[+] Assign Driver to bus 
+
+[+] while creating Schedule the pickup and dropoff must be selected from the Checkpoints
+
+
+FLASH MESSAGES 
+1. while login (username of password wrong)
+
+
+
+
+[+] Learn Mysql VS Nosql
+[+] Learn Vanilla js DOM manipulation
+[+] Learn Socket.io      
+[+] Learn React
+
+
+
+
+1. the user searches for the Schedules
+2. shows available routes
+3. the user chooses one of the available routes 
+4. the user selects the Seats
+5. the user enters the booker and passenger details
+6. the user heads for checkout
+
+7. shows two options to the user (book or pay)
+8. if user selects Booking option  
+          the seat is booked for certain time period until the user makes payment
+          the user is notified of the remaining time for paymennt
+          if remaining time exceeds 
+                the payment gets cancelled 
+                seat status changes to available
+          the seat status changes to reserved
+          the user can also cancel the reserved seat within time limit 
+          after the user pays, seat status changes to booked
+9. if user selects paying option
+          the seat is booked in real time
+          the seat status gets updated and broadcasted
+          

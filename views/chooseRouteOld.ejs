@@ -1,0 +1,61 @@
+<%- include('./partials/nav.ejs') %>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th scope="col">#</th>
+                <th scope="col">Pickup</th>
+                <th scope="col">Dropoff</th>
+                <th scope="col">Depart Date</th>
+                <th scope="col">Depart Time</th>
+                <th scope="col">Bus No</th>
+                <th scope="col">Bus Name</th>
+                <!-- <th scope="col">Arrival Date</th>
+            <th scope="col">Arrival Time</th> -->
+                <th scope="col">Price</th>
+                <th scope="col"></th>
+            </tr>
+        </thead>
+        <% if(schedules.length > 0){ %>
+            <% schedules.forEach((sch, index)=>{ %>
+                <tbody>
+                    <tr>
+                        <th scope="row">
+                            <%= index+1 %>
+                        </th>
+                        <td>
+                            <%= sch.pickup %>
+                        </td>
+                        <td>
+                            <%= sch.dropoff %>
+                        </td>
+                        <td>
+                            <%= sch.depart %>
+                        </td>
+                        <td>
+                            <%= sch.departTime %>
+                        </td>
+                        <td>
+                            <%= sch.busNo %>
+                        </td>
+                        <td>
+                            <a href="/api/schedules/buses/<%= sch.bus %>">
+                                <%= sch.busName %>
+                            </a>
+                        </td>
+                        <td>
+                            <%= sch.price %>
+                        </td>
+                        <td>
+                            <a href="#"><button>Book</button></a>
+                        </td>
+                    </tr>
+                </tbody>
+                <% }) %>
+                    <% }else{ %>
+                        <tbody>
+                            <h1>Sorry No Schedules found !</h1>
+                        </tbody>
+                        <% } %>
+
+    </table>

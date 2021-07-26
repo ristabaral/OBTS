@@ -1,0 +1,102 @@
+.top {
+    display: flex;
+    justify-content: space-between;
+}
+
+.top .front {
+    position: relative;
+    left: 20%;
+}
+
+.top .details {
+    position: relative;
+    right: 20%;
+}
+
+.top .line {
+    height: 500px;
+    border-left: 2px solid #b8c6db;
+}
+
+.top .vertical {
+    display: flex;
+    justify-content: left;
+    position: relative;
+    right: 90px;
+    top: 10px;
+    list-style: none;
+    margin-top: 10px;
+}
+
+li {
+    margin-left: 10px;
+}
+
+button {
+    background-color: #ace1af;
+    color: white;
+    border-style: none;
+    border-radius: 2px;
+    width: 30px;
+    height: 30px;
+}
+
+.top .front .hulk {
+    display: flex;
+}
+
+.hugetwo {
+    margin-top: 8px;
+}
+
+.hugetwo .vertical1 {
+    display: flex;
+    list-style: none;
+    margin-top: 10px;
+}
+
+.huge3 .vertical2 {
+    display: flex;
+    position: relative;
+    top: 10px;
+    right: 90px;
+    list-style: none;
+}
+
+.vertical23 {
+    margin-right: 12px;
+}
+
+.section #king {
+    background-color: whitesmoke;
+    color: black;
+    width: 100px;
+    border: 1px solid black;
+}
+
+.section .spain {
+    list-style: none;
+    margin-top: 20px;
+    width: 30px;
+    height: 30px;
+}
+
+.standard {
+    margin-top: 25px;
+}
+
+.section #spain {
+    background-color: blue;
+}
+
+.section #usa {
+    background-color: #ace1af;
+}
+
+.section #kenya {
+    background-color: brown;
+}
+
+.hike {
+    background-color: brown;
+}

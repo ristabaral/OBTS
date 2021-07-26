@@ -1,0 +1,64 @@
+<%- include('../partials/operatorNav.ejs') %>
+
+    <div class="row mt-5">
+        <div class="col-md-6 m-auto">
+            <div class="card card-body text-center">
+                <!-- <h1><i class="fab fa-node-js fa-3x"></i></h1> -->
+                <h1>Add New Schedule</h1>
+                <hr>
+                <form method="POST" action="/api/schedules">
+                    <div class="mb-3">
+                        <label for="depart" class="form-label">Depart Date</label>
+                        <input type="text" class="form-control" name="depart" id="depart" placeholder="YYYY-MM-DD">
+                    </div>
+                    <div class="mb-3">
+                        <label for="departTime" class="form-label">Depart Time</label>
+                        <input type="time" class="form-control" name="departTime" id="departTime" placeholder="HH:MM">
+                    </div>
+                    <div class="mb-3">
+                        <label for="arrival" class="form-label">Arrival Date</label>
+                        <input type="text" class="form-control" name="arrival" id="arrival" placeholder="YYYY-MM-DD">
+                    </div>
+                    <div class="mb-3">
+                        <label for="arrivalTime" class="form-label">Arrival Time</label>
+                        <input type="time" class="form-control" name="arrivalTime" id="arrivalTime" placeholder="HH:MM">
+                    </div>
+                    <div class="mb-3">
+                        <label for="pickup" class="form-label">Pickup</label>
+                        <input type="text" class="form-control" name="pickup" id="pickup">
+                    </div>
+                    <div class="mb-3">
+                        <label for="dropoff" class="form-label">Dropoff</label>
+                        <input type="text" class="form-control" name="dropoff" id="dropoff">
+                    </div>
+
+                    <div style="display:flex; justify-content: space-evenly;">
+                        Bus: <select name="bus">
+                            <% if(buses.length > 0){ %>
+                                <% buses.forEach(bus=>{ %>
+                                    <option value="<%= bus._id %>"><%= bus.busName %></option>
+                                <% }) %>
+                            <% }else{ %>
+                                <option value="null">No bus found</option>
+                            <% } %>
+                    
+                    </select><br>
+                    </div>
+                    <div class="mb-3">
+                        <label for="price" class="form-label">Price</label>
+                        <input type="number" class="form-control" name="price" id="price">
+                    </div>
+                    <% if(checkpoints.length > 0){ %>
+                        <div style="display:flex; justify-content: space-evenly;">
+                            <% checkpoints.forEach(chk=>{ %>
+                                <input type="checkbox" id="checkpoint" name="checkpoints" value="<%= chk._id %>">
+                                <%= chk.checkpoint %>
+                                    <% }) %>
+                        </div>
+                        <% } %>
+                            <hr>
+                            <button type="submit" class="btn btn-primary">Submit</button>
+                </form>
+            </div>
+        </div>
+    </div>

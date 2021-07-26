@@ -1,0 +1,227 @@
+<%- include('./partials/nav') %>
+
+    <div class="top">
+        <div class="front">Front
+            <div class="hulk">
+                <div class="hugeone">
+                    <div class="vertical">
+                        <li><button onclick="evaluation()" id="one">1</button></li>
+                        <li><button onclick="evaluation()" id="two">2</button></li>
+                    </div>
+                    <div class="vertical">
+                        <li><button onclick="evaluation()" class="hike" id="five">5</button></li>
+                        <li><button onclick="evaluation()" id="six">6</button></li>
+                    </div>
+                    <div class="vertical">
+                        <li><button onclick="evaluation()" id="nine">9</button></li>
+                        <li><button onclick="evaluation()" id="ten">10</button></li>
+                    </div>
+                    <div class="vertical">
+                        <li><button onclick="evaluation()" id="thirteen">13</button></li>
+                        <li><button onclick="evaluation()" id="fourteen">14</button></li>
+                    </div>
+                    <div class="vertical">
+                        <li><button onclick="evaluation()" id="seventeen">17</button></li>
+                        <li><button onclick="evaluation()" class="hike" id="eighteen">18</button></li>
+                    </div>
+                    <div class="vertical">
+                        <li><button onclick="evaluation()" class="hike" id="twentyone">21</button></li>
+                        <li><button onclick="evaluation()" id="twentytwo">22</button></li>
+                    </div>
+                    <div class="vertical">
+                        <li><button onclick="evaluation()" id="twentyfive">25</button></li>
+                        <li><button onclick="evaluation()" id="twentysix">26</button></li>
+                    </div>
+                    <div class="vertical">
+                        <li><button onclick="evaluation()" class="hike" id="twentynine">29</button></li>
+                        <li><button onclick="evaluation()" id="thirty">30</button></li>
+                    </div>
+                    <div class="vertical">
+                        <li><button onclick="evaluation()" id="thirtythree">33</button></li>
+                        <li><button onclick="evaluation()" id="thirtyfour">34</button></li>
+                    </div>
+                    <div class="vertical">
+                        <li><button onclick="evaluation()" class="hike" id="thirtyseven">37</button></li>
+                        <li><button onclick="evaluation()" id="thirtyeight">38</button></li>
+                    </div>
+                </div>
+                <div class="hugetwo">
+                    <div class="vertical1">
+                        <li><button onclick="evaluation()" class="saw" id="three">3</button></li>
+                        <li><button onclick="evaluation()" class="saw" id="four">4</button></li>
+                    </div>
+                    <div class="vertical1">
+                        <li><button onclick="evaluation()" class="saw" id="seven">7</button></li>
+                        <li><button onclick="evaluation()" class="saw" id="eight">8</button></li>
+                    </div>
+                    <div class="vertical1">
+                        <li><button onclick="evaluation()" class="hike" id="eleveen">11</button></li>
+                        <li><button onclick="evaluation()" class="saw" id="twelve">12</button></li>
+                    </div>
+                    <div class="vertical1">
+                        <li><button onclick="evaluation()" class="saw" id="fifteen">15</button></li>
+                        <li><button onclick="evaluation()" class="saw" id="sixteen">16</button></li>
+                    </div>
+                    <div class="vertical1">
+                        <li><button onclick="evaluation()" class="saw" id="nineteen">19</button></li>
+                        <li><button onclick="evaluation()" class="saw" id="twenty">20</button></li>
+                    </div>
+                    <div class="vertical1">
+                        <li><button onclick="evaluation()" class="saw" id="twentythree">23</button></li>
+                        <li><button onclick="evaluation()" class="saw" id="twentyfour">24</button></li>
+                    </div>
+                    <div class="vertical1">
+                        <li><button onclick="evaluation()" class="saw" id="twentyseven">27</button></li>
+                        <li><button onclick="evaluation()" class="saw" id="twentyeight">28</button></li>
+                    </div>
+                    <div class="vertical1">
+                        <li><button onclick="evaluation()" class="saw" id="thirtyone">31</button></li>
+                        <li><button onclick="evaluation()" class="saw" id="thirtytwo">32</button></li>
+                    </div>
+                    <div class="vertical1">
+                        <li><button onclick="evaluation()" class="saw" id="thirtyfive">35</button></li>
+                        <li><button onclick="evaluation()" class="saw" id="thirtysix">36</button></li>
+                    </div>
+                    <div class="vertical1">
+                        <li><button onclick="evaluation()" class="saw" id="thirtynine">39</button></li>
+                        <li><button onclick="evaluation()" class="saw" id="fourty">40</button></li>
+                    </div>
+                </div>
+            </div>
+            <div class="huge3">
+                <div class="vertical2">
+                    <li><button onclick="evaluation()" class="vertical23" id="fourtyone">41</button></li>
+                    <li><button onclick="evaluation()" class="saw vertical23" id="fourtytwo">42</button></li>
+                    <li><button onclick="evaluation()" class="saw vertical23" id="fourtythree">43</button></li>
+                    <li><button onclick="evaluation()" class="saw vertical23" id="fourtyfour">44</button></li>
+                    <li><button onclick="evaluation()" class="saw vertical23" id="fourtyfive">45</button></li>
+                </div>
+            </div>
+        </div>
+        <div class="line"></div>
+        <div class="details">Booking Details
+            <div class="section">
+                <h3>selected seats</h3><em id="data"> </em>
+                <p id="cash"> </p>
+                <button id="king" type="button" onclick="total()">Total >></button>
+                <br>
+                <form action="/api/seats/booking" method="POST">
+                    <input type="hidden" name="scheduleId" id="scheduleId" value="<%= schedule._id %>">
+                    <input type="hidden" name="selectedSeats" id="selectedSeats" value="">
+                    <input type="hidden" name="price" id="price" value="<%= schedule.price %>">
+                    <button type="submit" class="btn btn-success">Checkout</button>
+                </form>
+                <div class="standard">
+                    <li class="spain" id="spain"></li>selected seat
+                    <li class="spain" id="usa"></li>Available seat
+                    <li class="spain" id="kenya"></li>Already booked
+                </div>
+            </div>
+        </div>
+
+    </div>
+    <p id="help"></p>
+    <p id="support"></p>
+    </div>
+    <script>
+        var n = 0;
+        document.getElementById("support").value = 0;
+        var d;
+        document.getElementById("one").addEventListener("click", final);
+        document.getElementById("two").addEventListener("click", final);
+        document.getElementById("three").addEventListener("click", final);
+        document.getElementById("four").addEventListener("click", final);
+        document.getElementById("six").addEventListener("click", final);
+        document.getElementById("seven").addEventListener("click", final);
+        document.getElementById("eight").addEventListener("click", final);
+        document.getElementById("nine").addEventListener("click", final);
+        document.getElementById("ten").addEventListener("click", final);
+        document.getElementById("twelve").addEventListener("click", final);
+        document.getElementById("thirteen").addEventListener("click", final);
+        document.getElementById("fourteen").addEventListener("click", final);
+        document.getElementById("fifteen").addEventListener("click", final);
+        document.getElementById("sixteen").addEventListener("click", final);
+        document.getElementById("seventeen").addEventListener("click", final);
+        document.getElementById("nineteen").addEventListener("click", final);
+        document.getElementById("twenty").addEventListener("click", final);
+        document.getElementById("twentytwo").addEventListener("click", final);
+        document.getElementById("twentythree").addEventListener("click", final);
+        document.getElementById("twentyfour").addEventListener("click", final);
+        document.getElementById("twentyfive").addEventListener("click", final);
+        document.getElementById("twentysix").addEventListener("click", final);
+        document.getElementById("twentyseven").addEventListener("click", final);
+        document.getElementById("twentyeight").addEventListener("click", final);
+        document.getElementById("twentynine").addEventListener("click", final);
+        document.getElementById("thirty").addEventListener("click", final);
+        document.getElementById("thirtyone").addEventListener("click", final);
+        document.getElementById("thirtytwo").addEventListener("click", final);
+        document.getElementById("thirtythree").addEventListener("click", final);
+        document.getElementById("thirtyfour").addEventListener("click", final);
+        document.getElementById("thirtyfive").addEventListener("click", final);
+        document.getElementById("thirtysix").addEventListener("click", final);
+        document.getElementById("thirtyseven").addEventListener("click", final);
+        document.getElementById("thirtyeight").addEventListener("click", final);
+        document.getElementById("thirtynine").addEventListener("click", final);
+        document.getElementById("fourty").addEventListener("click", final);
+        document.getElementById("fourtyone").addEventListener("click", final);
+        document.getElementById("fourtytwo").addEventListener("click", final);
+        document.getElementById("fourtythree").addEventListener("click", final);
+        document.getElementById("fourtyfour").addEventListener("click", final);
+        document.getElementById("fourtyfive").addEventListener("click", final);
+
+
+
+        let seats = [];
+
+        let fillData = (data) => {
+            seats.push(data);
+            let ele = document.getElementById('data');
+            ele.innerHTML += data + ', ';
+        }
+
+        function final(event) {
+            if (event.target.style.backgroundColor == "blue") {
+                event.target.style.backgroundColor = "#ace1af";
+                n = n - 1;
+                document.getElementById("support").value = document.getElementById("support").value - 50;
+
+                document.getElementById("data").innerHTML = "";
+
+                let seat = document.getElementById(event.srcElement.id).innerHTML;
+
+                if (seats.length > 0) {
+                    if (seats.includes(seat)) {
+                        var index = seats.indexOf(seat);
+                        if (index > -1) {
+                            seats.splice(index, 1);
+                        }
+                    }
+                    for (let i = 0; i < seats.length; i++) {
+                        document.getElementById("data").innerHTML += seats[i] + ', ';
+                    }
+
+                } else {
+                    document.getElementById("data").innerHTML = "";
+                }
+                document.getElementById("selectedSeats").value = seats.toString();
+
+            } else {
+
+                event.target.style.backgroundColor = "blue";
+                n = n + 1;
+                document.getElementById("support").value = document.getElementById("support").value + 50;
+                // document.getElementById("data").innerHTML = document.getElementById(event.srcElement.id).innerHTML;
+                // document.getElementById("data").innerHTML = n + ' seat';
+                let data = document.getElementById(event.srcElement.id).innerHTML;
+
+                fillData(data);
+                document.getElementById("selectedSeats").value = seats.toString();
+
+            }
+
+        }
+
+        function total() {
+            document.getElementById("cash").innerHTML = document.getElementById("support").value + " rupees";
+        }
+    </script>

@@ -1,0 +1,410 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>View Page</title>
+<style>
+ body {
+        color: #566787;
+  background: #f5f5f5;
+  background-color: linear-gradient(rgba(0,0,0,.5), rgba(0,0,0,.5));
+ height:100%;
+  display: flex;
+ 
+  
+ }
+.split {
+  height: 100%;
+  position: fixed;
+  z-index: 1;
+  top: 0;
+  overflow-x: hidden;
+  padding-top: 20px;
+}
+.left{
+    left:0;
+    background-color:skyblue;
+    width:50%;
+
+}
+.right {
+  right: 0;
+  height:100%;
+  width:50%;
+  background: linear-gradient(40deg, #2096ff, #05ffa3) !important;  
+}
+.flip-card {
+  background-color: transparent;
+  width: 500px;
+  height: 500px;
+  margin: 10px auto 0px auto;
+  position:center;
+  perspective: 1000px;
+}
+
+.flip-card-inner {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  text-align: center;
+  transition: transform 0.6s;
+  transform-style: preserve-3d;
+  box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+}
+
+.flip-card:hover .flip-card-inner {
+  transform: rotateY(180deg);
+}
+
+.flip-card-front, .flip-card-back {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+}
+
+.flip-card-front {
+  background-color: skyblue;
+  color: red;
+}
+
+.flip-card-back {
+  background-color: skyblue;
+  color: black;
+  font-style:sans-serif;
+  transform: rotateY(180deg);
+}
+  padding: 2px 16px;
+}
+  table {
+  border-collapse: collapse;
+  border-spacing: 0;
+  width: 100%;
+  border: 1px solid #ddd;
+}
+ .table-wrapper {
+        background: #fff;
+        padding: 20px 25px;
+        margin: 30px 0;
+        border-radius:1px;
+        box-shadow: 0 1px 1px rgba(0, 0, 0, 0.247);
+    }
+    table.table tr th, table.table tr td {
+    border-color: #e9e9e9;
+    
+}
+table.table-striped tbody tr:nth-of-type(odd) {
+    background-color: #fcfcfc;
+}
+table.table-striped.table-hover tbody tr:hover {
+    background: #f5f5f5;
+}
+table.table th i {
+    font-size: 13px;
+    margin: 0 5px;
+    cursor: pointer;
+}
+table.table td:last-child {
+    width: 130px;
+}
+table.table td a {
+    color: #a0a5b1;
+    display: inline-block;
+    margin: 0 5px;
+}
+
+th, td {
+  text-align: left;
+  padding: 16px;
+}
+
+tr:nth-child(even) {
+  background-color: #f2f2f2;
+}
+.top
+        {
+            display:flex;
+            justify-content:space-between;
+        }
+        .top .front
+        {
+            position:relative;
+            left:40%
+        }
+        .top .details
+        {
+            position:relative;
+            right:130%;
+        }
+
+        .top .vertical
+        {
+            
+            display:flex;
+            justify-content:left;
+            position:relative;
+            right:90px;
+            top:10px;
+            list-style: none;
+            margin-top:10px;
+           
+           
+        }
+        li
+        {
+            margin-left:10px;
+        }
+        button
+        {
+            background-color:#ace1af;
+            color:white;
+            border-style: none;
+            border-radius:2px;
+            width:30px;
+            height:30px;
+        }
+        .top .front .hulk
+        {
+            display: flex;
+        }
+        .hugetwo
+        {
+            margin-top:8px;
+        }
+        .hugetwo .vertical1
+        {
+            display:flex;
+            list-style: none;
+            margin-top:10px;
+        }
+        .huge3 .vertical2
+        {
+            display:flex;
+           position:relative;
+           top:15px;
+           right:85px;
+            list-style:none;
+
+        }
+        .vertical23
+        {
+            margin-right:12px;
+        }
+        .section #king
+        {
+           cursor:pointer;
+            color:black;
+            width:100px;
+            background-color: #f9c5d1;
+background-image: linear-gradient(315deg, #f9c5d1 0%, #9795ef 74%);
+
+        }
+        .section .spain
+        {
+            list-style: none;
+            margin-top:20px;
+            width:30px;
+            height:30px;
+            
+        }
+        .standard
+        {
+            margin-top:25px;
+            
+        }
+        .section #spain
+        {
+            background-color:blue;
+        }
+        .section #usa
+        {
+            background-color:#ace1af;
+        }
+        .section #kenya
+        {
+            background-color:brown;
+        }
+        .hike
+        {
+         background-color: brown;
+        }
+        #classic
+        {
+            color:#09203f;
+            font-family: Arial, Helvetica, sans-serif;
+            text-transform:uppercase;
+        }
+        
+
+</style>
+<body>
+<div class="split left">
+<div class="flip-card">
+  <div class="flip-card-inner">
+    <div class="flip-card-front">
+      <img src="bg.jpg" alt="Avatar" style="width:500px;height:500px;">
+      <h1>Click on the image to see the bus details</h1>
+    </div>
+   
+    <div class="flip-card-back">
+       <div class="container">
+       <h2>Bus Details</h2>
+       <div class="table-wrapper">
+            <table id="myTable" class="table table-striped table-hover table-bordered">
+            
+                    <tr class="header">
+                    
+                        <th>Bus Name</th>
+                        <td>MAKALU</td>
+                       
+                    </tr>
+                   
+                        <th>Bus Number</th>
+                        <td>ma 7 kha 855</td>
+                       
+                       
+                    </tr>
+                   <tr>
+                        <th>Operator  Name</th>
+                        <td>Pawan Bhatta</td>
+                        
+                       
+                    </tr>
+                    <tr>
+                        <th>Conductor Number</th>
+                        <td>Sagar Neupane</td>
+                    </tr><tr>
+                        <th>Driver Number</th>
+                        <td>982637463</td>
+                    </tr><tr>
+                        <th>Depart Time</th>
+                        <td>11:00 AM</td>
+                    </tr><tr>
+                        <th>Arrival Time</th>
+                        <td>1:20 PM</td>
+                    </tr>
+                    
+                
+        
+                  
+                        
+              
+            </table>
+            </div>
+            </div>
+ 
+ 
+   
+  </div>
+
+
+          
+                    
+  </div>
+    </div>
+  </div>
+</div>
+<div class="split right">
+<div class="top">
+    <div class="front">Front
+        <div class="hulk">
+        <div class="hugeone">
+    <div class="vertical">
+        <li><button onclick="evaluation()" id="one">1</button></li>
+        <li><button onclick="evaluation()" id="two">2</button></li>
+        </div>
+        <div class="vertical ">
+            <li><button onclick="evaluation()" class="hike" id="five">5</button></li>
+        <li><button onclick="evaluation()" id="six">6</button></li>
+        </div>
+        <div class="vertical ">
+            <li><button onclick="evaluation()" id="nine">9</button></li>
+        <li><button  onclick="evaluation()" id="ten">10</button></li>
+        </div>
+        <div class="vertical ">
+            <li><button onclick="evaluation()" id="thirteen">13</button></li>
+        <li><button onclick="evaluation()" id="fourteen">14</button></li>
+        </div>
+        <div class="vertical ">
+            <li><button onclick="evaluation()" id="seventeen">17</button></li>
+        <li><button onclick="evaluation()" class="hike" id="eighteen">18</button></li>
+        </div>
+        <div class="vertical ">
+            <li><button onclick="evaluation()" class="hike" id="twentyone">21</button></li>
+        <li><button onclick="evaluation()" id="twentytwo">22</button></li>
+        </div>
+        <div class="vertical ">
+            <li><button onclick="evaluation()" id="twentyfive">25</button></li>
+        <li><button onclick="evaluation()" id="twentysix">26</button></li>
+        </div>
+        <div class="vertical ">
+            <li><button onclick="evaluation()" class="hike" id="twentynine">29</button></li>
+        <li><button onclick="evaluation()" id="thirty">30</button></li>
+        </div> 
+        </div>
+        <div class="hugetwo">
+            <div class="vertical1">
+                <li><button onclick="evaluation()"  class="saw" id="three">3</button></li>
+                <li><button onclick="evaluation()"  class="saw" id="four">4</button></li>
+                </div>
+                <div class="vertical1">
+                    <li><button onclick="evaluation()"  class="saw" id="seven">7</button></li>
+                <li><button onclick="evaluation()"  class="saw" id="eight">8</button></li>
+                </div>
+                <div class="vertical1">
+                    <li><button  onclick="evaluation()"  class="hike" id="eleveen">11</button></li>
+                <li><button onclick="evaluation()"  class="saw" id="twelve">12</button></li>
+                </div> 
+                <div class="vertical1">
+                    <li><button onclick="evaluation()"  class="saw" id="fifteen">15</button></li>
+                <li><button onclick="evaluation()"  class="saw" id="sixteen">16</button></li>
+                </div>
+                <div class="vertical1">
+                    <li><button onclick="evaluation()"  class="saw" id="nineteen">19</button></li>
+                <li><button onclick="evaluation()"  class="saw" id="twenty">20</button></li>
+                </div>
+                <div class="vertical1">
+                    <li><button onclick="evaluation()"  class="saw"  id="twentythree">23</button></li>
+                <li><button onclick="evaluation()"  class="saw" id="twentyfour">24</button></li>
+                </div>
+                <div class="vertical1">
+                    <li><button  onclick="evaluation()"  class="saw"  id="twentyseven">27</button></li>
+                <li><button onclick="evaluation()"  class="saw" id="twentyeight">28</button></li>
+                </div>
+                <div class="vertical1">
+                    <li><button  onclick="evaluation()"  class="saw" id="thirtyone">31</button></li>
+                <li><button onclick="evaluation()"  class="saw" id="thirtytwo">32</button></li>
+                </div> 
+                
+            
+        </div>
+        </div>
+        <div class="huge3">
+         <div class="vertical2">
+             <li><button onclick="evaluation()"  class="vertical23" id="thirtythree">33</button></li>
+             <li><button onclick="evaluation()" class="saw vertical23" id="thirtyfour">34</button></li>
+             <li><button  onclick="evaluation()" class="saw vertical23" id="thirtyfive">35</button></li>
+             <li><button onclick="evaluation()" class="saw vertical23" id="thirtysix">36</button></li>
+             <li><button onclick="evaluation()" class="saw vertical23" id="thirtyseven">37</button></li>
+         </div>
+        </div>
+        
+</div>
+
+  </div>
+
+                       
+               
+                        
+                </tbody>
+            </table>
+            </div>
+            </div>
+ 
+ 
+   
+  </div>
+</div>
+</body>
+</html>

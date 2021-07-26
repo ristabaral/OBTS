@@ -1,0 +1,134 @@
+/* * {
+    margin: 0px;
+    padding: 0px;
+    box-sizing: border-box;
+} */
+
+
+/* body
+{
+    background-color: #7ee8fa;
+    background-image: linear-gradient(315deg, #7ee8fa 0%, #80ff72 74%);
+    font-family: Arial, Helvetica, sans-serif;
+    
+} */
+
+.payment {
+    background-color: #ffffff;
+    width: 500px;
+    padding: 25px;
+    margin: 25px auto;
+    box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.5);
+}
+
+.payment h1 {
+    background-color: #ffff;
+    color: springgreen;
+    font-size: 24px;
+    padding: 10px;
+    margin-bottom: 20px;
+    text-align: center;
+    border: 1px dotted #333;
+}
+
+h2 {
+    padding: 5px;
+    color: springgreen;
+}
+
+.box {
+    width: 100%;
+    margin-right: 12px;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    padding: 5px 0;
+}
+
+.box:last-child {
+    margin-right: 0;
+}
+
+.name {
+    padding: 14px 10px 14px 50px;
+    width: 100%;
+    background-color: #ffffff;
+    border: 1px solid #00000033;
+    outline: none;
+    letter-spacing: 1px;
+    transition: 0.3s;
+    border-radius: 3px;
+    color: #333;
+}
+
+.box .icon {
+    width: 48px;
+    height: 49px;
+    top: 45px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    top: 0px;
+    bottom: 0px;
+    left: 0px;
+    color: #333;
+    background-color: #f1f1f1;
+    border-radius: 2px 0 0 2px;
+    transition: 0.3s;
+    font-size: 18px;
+    pointer-events: none;
+    border: 1px solid #00000033;
+    border-right: none;
+}
+
+.name:focus+.icon {
+    color: springgreen;
+    background-color: #f1f1f1;
+    border: none;
+    border-right: 1px solid springgreen;
+    transition: 0.5s;
+}
+
+.btn-group button {
+    background-color: #ffffff;
+    border: 1px solid #333;
+    color: #333;
+    padding: 10px 24px;
+    cursor: pointer;
+    float: left;
+}
+
+.btn-group button:hover {
+    background-color: springgreen;
+}
+
+.box .user {
+    padding: 14px 10px 14px 50px;
+    border: 1px solid #00000033;
+    border-radius: 2px 0 0 2px;
+    width: 50%;
+}
+
+.box .pin {
+    width: 50%;
+    padding: 14px 10px 14px 50px;
+    border: 1px solid #00000033;
+    border-radius: 2px 0 0 2px;
+    font-size: 14px;
+}
+
+.box .but {
+    width: 50%;
+    padding: 14px 10px 14px 50px;
+    background-color: springgreen;
+    border: 1px solid #00000033;
+    border-radius: 2px 0 0 2px;
+    cursor: pointer;
+}
+
+.box .dop {
+    border: 1px solid #00000033;
+    border-radius: 2px 0 0 2px;
+    width: 60%;
+}

@@ -1,0 +1,67 @@
+<div>
+  <h1>PAYMENT SUCCESSFUL</h1>
+<!-- <button>Continue</button> -->
+<a href="/api/booking/verified_success">Continue</a>
+</div>
+
+<!-- 
+<form action="https://uat.esewa.com.np/epay/transrec" method="POST">
+  <input value="<%= response.amt %>" name="amt" type="hidden">
+  <input value="EPAYTEST" name="scd" type="hidden">
+  <input value="<%= response.oid %>" name="pid" type="hidden">
+  <input value="<%= response.refId %>" name="rid" type="hidden">
+  <input value="Submit" type="submit">
+  </form> -->
+
+  <script src="https://cdn.socket.io/3.1.3/socket.io.min.js"></script>
+
+    <script>
+ var seats = <%- JSON.stringify(seats) %>;
+    
+        const socket = io('http://localhost:3000')
+
+        socket.on('connection',()=>{
+            console.log('user connected...lets change the seats status')
+            changeSeatStatus(seats)
+        }) 
+
+        const changeSeatStatus = (seats)=>{
+          socket.emit('changeSeatStatus',seats)
+        }
+        
+        
+    </script>
+
+
+<script>
+  (function(){
+    // var response = <%- JSON.stringify(response) %>;
+    
+    // console.log('query data',response)
+    
+    var path="https://uat.esewa.com.np/epay/transrec";
+    var params= {
+      amt: response.amt,
+      rid: response.refId,
+      pid: response.iod,
+      scd: "EPAYTEST"
+    }
+    
+    function post(path, params) {
+      var form = document.createElement("form");
+      form.setAttribute("method", "POST");
+      form.setAttribute("action", path);
+      
+      for(var key in params) {
+        var hiddenField = document.createElement("input");
+        hiddenField.setAttribute("type", "hidden");
+        hiddenField.setAttribute("name", key);
+        hiddenField.setAttribute("value", params[key]);
+        form.appendChild(hiddenField);
+      }
+      
+      document.body.appendChild(form);
+      form.submit();
+    }
+  })()
+  </script>

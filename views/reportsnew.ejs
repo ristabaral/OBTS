@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>View Page</title>
+<style>
+  body {
+        color: #566787;
+  background: #f5f5f5;
+  background-image: linear-gradient(rgba(0,0,0,.5), rgba(0,0,0,.5)), url(bg.jpg);
+ height:100%;
+  display: flex;
+ 
+  
+ }
+.split {
+  height: 100%;
+  position: fixed;
+  z-index: 1;
+  top: 0;
+  overflow-x: hidden;
+  padding-top: 20px;
+}
+
+.right {
+  right: 0;
+  height:100%;
+  width:70%;
+   
+  
+}
+.card {
+  box-shadow: 2px 2px 15px
+            rgba(0,0,0,0.3);
+  transition: 0.3s;
+  font-family: 'Varela Round', sans-serif;
+  width: 100%;
+  height: 200px;
+   background: linear-gradient(40deg, #2096ff, #05ffa3) !important;
+
+}
+
+.card:hover {
+  box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+}
+
+.container {
+  padding: 2px 16px;
+}
+ label{
+            font-family: sans-serif;
+            font-size: 18px;
+            
+        }
+        input#name{
+            width: 300px;
+            border: 1px solid #ddd;
+            border-radius: 3px;
+            height: 10px;
+            outline: 0;
+            padding: 7px;
+            background-color: #ffff;
+           
+        }
+        input#submit{
+            width:200px;
+            padding: 7px;
+            font-size: 16px;
+            font-family: sans-serif;
+            border-radius: 3px;
+            background-color: green;
+            color:snow;
+            cursor:pointer;
+            border: 1px solid rgba(3, 151, 10, 0.555);
+            box-shadow: 1px 1px 5px white;
+        }
+        input#submit:hover{
+            background-color: blue;
+        }
+   table {
+  border-collapse: collapse;
+  border-spacing: 0;
+  width: 100%;
+  border: 1px solid #ddd;
+}
+ .table-wrapper {
+        background: #fff;
+        padding: 20px 25px;
+        margin: 30px 0;
+        border-radius:1px;
+        box-shadow: 0 1px 1px rgba(0, 0, 0, 0.247);
+    }
+    table.table tr th, table.table tr td {
+    border-color: #e9e9e9;
+    
+}
+table.table-striped tbody tr:nth-of-type(odd) {
+    background-color: #fcfcfc;
+}
+table.table-striped.table-hover tbody tr:hover {
+    background: #f5f5f5;
+}
+table.table th i {
+    font-size: 13px;
+    margin: 0 5px;
+    cursor: pointer;
+}
+table.table td:last-child {
+    width: 130px;
+}
+table.table td a {
+    color: #a0a5b1;
+    display: inline-block;
+    margin: 0 5px;
+}
+
+th, td {
+  text-align: left;
+  padding: 16px;
+}
+
+tr:nth-child(even) {
+  background-color: #f2f2f2;
+}
+
+</style>
+</head>
+<body>
+<div class="bg-img">
+<div class="split-left">
+<div class="card">
+  
+  <div class="container">
+    <label>From</label>
+                    <br>
+                    <input type="date" name="depart" id="name" >
+                    <br
+                    <label>To</label>
+                    <br>
+                    <input type="date" name="arrival" id="name" >
+                    <br
+                    <label>Bus Number</label>
+                    <br>
+                    <input type="text" name="busNO" id="name" placeholder="Enter your bus number">
+                    <br><br>
+                    <input type="submit" value="Submit" name="submit" id="submit">
+  </div>
+</div><br>
+<div class="card">
+  
+  <div class="container">
+    <label>From</label>
+                    <br>
+                    <input type="date" name="depart" id="name" >
+                    <br>
+                    <label>To</label>
+                    <br>
+                    <input type="date" name="arrival" id="name" >
+                    <br>
+                    <label>Bus Number</label>
+                    <br>
+                    <input type="text" name="email" id="name" placeholder="Enter your bus number">
+                    <br><br>
+                    <input type="submit" value="Submit" name="submit" id="submit">
+  </div>
+</div><br>
+<div class="card">
+  
+  <div class="container">
+   <label>From </label>
+                    <br>
+                    <input type="date" name="depart" id="name" >
+                    <br>
+                    <label>To</label>
+                    <br>
+                    <input type="date" name="arrival" id="name" >
+                    <br>
+                    <label>Bus Number</label>
+                    <br>
+                    <input type="text" name="email" id="name" placeholder="Enter your bus number">
+                    <br><br>
+                    <input type="submit" value="Submit" name="submit" id="submit">
+  </div>
+</div>
+</div>
+<div class="split right">
+ <div class="table-wrapper">
+            <table id="myTable" class="table table-striped table-hover table-bordered">
+                <thead>
+                    <tr class="header">
+                    <th>SN</th>
+                        <th>Bus Name</th>
+                        <th>Bus Number </th>
+                        <th>Depart Date</th>
+                        <th>Arrival Date </th>
+                        <th>depart Time</th>
+                        <th>Arrival Time </th>
+                        <th>Checkpoints</th>
+                      
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                         <td>1</td>
+                         <td>Makalu</td>
+                        <td>ba 2 pa 354</td>
+                        <td>25/12/2078</td>
+                        <td>26/12/2078</td>
+                        <td>11:23 Am</td>
+                        <td>1:50 Pm</td>
+                        <td>Mustang</td>
+                       
+                    </tr>
+                    <tr>
+                      <td>2</td>
+                      <td>Sagarmatha</td>
+                        <td>ma 1 pa 354</td>
+                        <td>25/12/2078</td>
+                        <td>26/12/2078</td>
+                        <td>11:23 Am</td>
+                        <td>1:50 Pm</td>
+                        <td>Mustang</td>
+                        
+                    </tr>
+                    <tr>
+                        <td>3</td>
+                        <td>Nagarik</td>
+                        <td>ba 2 pa 354</td>
+                        <td>25/3/2078</td>
+                        <td>26/3/2078</td>
+                        <td>11:23 Am</td>
+                        <td>1:50 Pm</td>
+                        <td>Mustang</td>
+                      
+                    </tr>
+                    <tr>
+                        <td>4</td>
+                        <td>Suryodaya</td>
+                        <td>ba 2 pa 354</td>
+                        <td>25/12/2078</td>
+                        <td>26/12/2078</td>
+                        <td>11:23 Am</td>
+                        <td>1:50 Pm</td>
+                        <td>Mustang</td>
+                       
+                    </tr>
+                      <tr>
+                      <td>5</td>
+                      <td>MEro bau ko gadhi</td>
+                        <td>ma 1 pa 354</td>
+                        <td>25/12/2078</td>
+                        <td>26/12/2078</td>
+                        <td>11:23 Am</td>
+                        <td>1:50 Pm</td>
+                        <td>Mustang</td>
+                        
+                    </tr>
+                      <tr>
+                      <td>6</td>
+                      <td>Purwanchal</td>
+                        <td>ma 1 pa 354</td>
+                        <td>25/12/2078</td>
+                        <td>26/12/2078</td>
+                        <td>11:23 Am</td>
+                        <td>1:50 Pm</td>
+                        <td>Mustang</td>
+                        
+                    </tr>
+                        
+                </tbody>
+            </table>
+            </div>
+            </div>
+ 
+ 
+   
+  </div>
+</div>
+
+
+</body>
+</html>

@@ -1,0 +1,114 @@
+<%- include('./partials/nav') %>
+
+    <script type="text/javascript">
+        $(document).ready(function() {
+            // Activate tooltip
+            $('[data-toggle="tooltip"]').tooltip();
+
+            // Select/Deselect checkboxes
+            var checkbox = $('table tbody input[type="checkbox"]');
+            $("#selectAll").click(function() {
+                if (this.checked) {
+                    checkbox.each(function() {
+                        this.checked = true;
+                    });
+                } else {
+                    checkbox.each(function() {
+                        this.checked = false;
+                    });
+                }
+            });
+            checkbox.click(function() {
+                if (!this.checked) {
+                    $("#selectAll").prop("checked", false);
+                }
+            });
+        });
+    </script>
+
+    <div class="bg-img">
+        <div class="container-xl">
+            <div class="table-responsive">
+                <div class="table-wrapper">
+                    <div class="table-title">
+                        <div class="row">
+                            <div class="col-sm-8">
+                                <i class="material-icons fas fa-route"></i> <span style="font-size: 25px;">Available Routes
+                            </span>
+                            </div>
+                        </div>
+                    </div>
+                    <table id="myTable" class="table table-striped table-hover table-bordered">
+                        <thead>
+                            <tr class="header">
+                                <th scope="col">SN</th>
+                                <th scope="col">Pickup</th>
+                                <th scope="col">Dropoff</th>
+                                <th scope="col">Depart Date</th>
+                                <th scope="col">Depart Time</th>
+                                <th scope="col">Bus No</th>
+                                <th scope="col">Bus Name</th>
+                                <!-- <th scope="col">Arrival Date</th>
+                            <th scope="col">Arrival Time</th> -->
+                                <th scope="col">Price</th>
+                                <th scope="col">Action</th>
+                            </tr>
+                        </thead>
+                        <% if(schedules.length > 0){ %>
+                            <% schedules.forEach((sch, index)=>{ %>
+                                <tbody>
+                                    <tr>
+                                        <th scope="row">
+                                            <%= index+1 %>
+                                        </th>
+                                        <td>
+                                            <%= sch.pickup %>
+                                        </td>
+                                        <td>
+                                            <%= sch.dropoff %>
+                                        </td>
+                                        <td>
+                                            <%= sch.depart %>
+                                        </td>
+                                        <td>
+                                            <%= sch.departTime %>
+                                        </td>
+                                        <td>
+                                            <%= sch.busNo %>
+                                        </td>
+                                        <td>
+                                            <a href="/api/schedules/buses/<%= sch.bus %>">
+                                                <%= sch.busName %>
+                                            </a>
+                                        </td>
+                                        <td>
+                                            <%= sch.price %>
+                                        </td>
+                                        <td>
+                                            <a href="/api/selectseats/<%= sch._id %>"><button>Book</button></a>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                                <% }) %>
+                                    <% }else{ %>
+                                        <tbody>
+                                            <h1>Sorry No Schedules found !</h1>
+                                        </tbody>
+                                        <% } %>
+                    </table>
+                    <!-- <div class="clearfix">
+
+                        <ul class="pagination">
+                            <li class="page-item disabled"><a href="#"><i class="fa fa-angle-double-left"></i></a></li>
+                            <li class="page-item"><a href="#" class="page-link">1</a></li>
+                            <li class="page-item"><a href="#" class="page-link">2</a></li>
+                            <li class="page-item active"><a href="#" class="page-link">3</a></li>
+                            <li class="page-item"><a href="#" class="page-link">4</a></li>
+                            <li class="page-item"><a href="#" class="page-link">5</a></li>
+                            <li class="page-item"><a href="#" class="page-link"><i class="fa fa-angle-double-right"></i></a></li>
+                        </ul>
+                    </div> -->
+                </div>
+            </div>
+        </div>
+    </div>

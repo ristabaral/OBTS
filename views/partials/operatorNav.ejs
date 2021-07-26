@@ -1,0 +1,62 @@
+<!-- <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <div class="container-fluid">
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav">
+                <li class="nav-item">
+                    <a class="nav-link active" aria-current="page" href="/api/dashboard/buses">Bus</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link active" aria-current="page" href="/api/dashboard/schedules">Schedule</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link active" aria-current="page" href="/api/dashboard/conductors">Conductor</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link active" aria-current="page" href="/api/dashboard/checkpoints">Checkpoint</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link active" aria-current="page" href="/api/dashboard/changepassword">Change Passowrd</a>
+                </li>
+                <li>
+                    <form action="/api/logout" method="POST">
+                        <input hidden value="{{refresh_token}}" type="text" name="refresh_token">
+                        <button type="submit">Logout</button>
+                    </form>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav> -->
+
+
+<nav class="navbar navbar-expand-lg navbar-light bg-light" style="position: sticky; top: 2px;">
+    <div class="container-fluid">
+        <i class="fa fa-bus"></i><a class="navbar-brand" href="/api/dashboard">Dashboard</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav">
+                <!-- <li class="nav-item">
+                    <a class="nav-link active" onclick="togglePopup()" aria-current="page">Login</a>
+                </li> -->
+                <li class="nav-item">
+                    <a class="nav-link" href="/api/dashboard/buses">Bus</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/api/dashboard/schedules">Schedules</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/api/dashboard/checkpoints">Checkpoints</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/api/dashboard/conductors">Conductors</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/api/dashboard/changepassword">Change Password</a>
+                </li>
+
+            </ul>
+        </div>
+    </div>
+</nav>

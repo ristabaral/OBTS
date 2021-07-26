@@ -1,0 +1,213 @@
+<style>
+    body {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
+    
+    #seats {
+        display: flex;
+        flex-direction: column;
+        height: 90vh;
+        width: 20vw;
+        margin: 0 auto;
+        /* margin-top: 10vh; */
+        background-color: aqua;
+    }
+    
+    .row {
+        margin: 0;
+        display: flex;
+        height: 100%;
+        width: 100%;
+        justify-content: center;
+        align-items: center;
+    }
+    
+    .row>div {
+        display: flex;
+        align-self: center;
+        flex: 1;
+        justify-content: center;
+        align-items: center;
+        /* margin-bottom: 1px;
+            margin-right: 1px; */
+        /* margin: 0px 1px 1px px; */
+    }
+    
+    .door {
+        background-color: Transparent;
+        background-repeat: no-repeat;
+        border: none;
+        cursor: none;
+        overflow: hidden;
+        outline: none;
+    }
+    
+    .driver {
+        background-color: red;
+    }
+    
+    .passenger.notTaken {
+        background-color: #06f111;
+    }
+    
+    .passenger.taken {
+        background-color: rgb(16, 16, 255);
+    }
+    
+    .passenger.booked {
+        background-color: rgb(145, 90, 14);
+    }
+    
+    .seat>div {
+        padding: 1rem;
+        display: inline-block;
+        align-self: center;
+        cursor: pointer;
+        /* height: 5px;
+            width: 5px; */
+    }
+    
+    form {
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+        margin: 3px 0;
+        padding: 5px;
+    }
+    
+    input {
+        background: lime;
+        border-radius: 15px;
+        height: 5rem;
+        width: 10rem;
+    }
+</style>
+
+<%- include('./partials/operatorNav.ejs') %>
+
+    <div id="seats"></div>
+
+    <form action="/api/dashboard/buses/seats" method="POST">
+        <input type="hidden" id="bookedSeats" name="selectedSeats">
+        <input type="hidden" name="bus" value="<%= bus._id %>">
+        <input type="submit" value="Submit">
+    </form>
+    <script>
+        var mySeats = <%- JSON.stringify(documents) %>;
+        // console.log('here', mySeats);
+
+        var seats = [
+            ["DOOR", "", "", "", "D"],
+            ["S01", "S02", "", "S03", "S04"],
+            ["S05", "S06", "", "S07", "S08"],
+            ["S09", "S10", "", "S11", "S12"],
+            ["S13", "S14", "", "S15", "S16"],
+            ["S17", "S18", "", "S19", "S20"],
+            ["S21", "S22", "", "S23", "S24"],
+            ["S25", "S26", "", "S27", "S28"],
+            ["S29", "S30", "", "S31", "S32"],
+            ["S33", "S34", "", "S35", "S36"],
+            ["S37", "S38", "", "S39", "S40"],
+            ["S41", "S42", "S43", "S44", "S45"]
+        ];
+
+        const changeRoles = (seat) => {
+            console.log("Hi")
+            seat.children[0].classList.remove("notTaken");
+            seat.children[0].classList.add("taken");
+        }
+
+        const seatDom = document.getElementById("seats");
+        seats.forEach(row => {
+            var role = document.createElement('div');
+            role.classList.add("row");
+            row.forEach(st => {
+                var seat = document.createElement("div");
+                seat.classList.add("seat");
+                if (st != "") {
+                    seat.innerHTML = `<div>${st}</div>`;
+                    mySeats.forEach(mst => {
+                        if (mst.number == st && mst.status == true && mst.number != 'DOOR' && mst.number != "D") {
+                            seat.children[0].classList.add("passenger");
+                            seat.children[0].classList.add("notTaken");
+                        } else if (mst.number == st && mst.status == false && mst.number != 'DOOR' && mst.number != "D") {
+                            seat.children[0].classList.add("passenger");
+                            seat.children[0].classList.add("booked");
+                        } else if (mst.number == "D")
+                            seat.children[0].classList.add("driver");
+                        else
+                            seat.children[0].classList.add("door");
+                    })
+                }
+                role.append(seat);
+            })
+            seatDom.append(role);
+        });
+
+        window.onload = () => {
+            document.querySelectorAll('div.seat').forEach((seat) => {
+                // console.log(seat);
+                seat.onclick = function() {
+                    changeRoles(seat)
+                };
+            });
+
+        }
+
+        var selectedSeats = [];
+
+        const elements = document.getElementsByClassName("passenger");
+
+        Array.from(elements).forEach(function(element) {
+            element.addEventListener('click', () => {
+                var bgColor = getStyle(element, 'backgroundColor');
+                if (bgColor == "rgb(6, 241, 17)") {
+                    console.log('change')
+                    element.style.backgroundColor = 'rgb(16, 16, 255)'
+                    selectedSeats.push(element.innerHTML);
+                    document.getElementById('bookedSeats').value = selectedSeats;
+                    console.log(selectedSeats)
+                }
+                if (bgColor == "rgb(16, 16, 255)") {
+                    element.style.backgroundColor = "rgb(6, 241, 17)";
+                    if (selectedSeats.includes(element.innerHTML)) {
+                        var index = selectedSeats.indexOf(element.innerHTML);
+                        if (index > -1)
+                            selectedSeats.splice(index, 1);
+                    }
+                    document.getElementById('bookedSeats').value = selectedSeats;
+                    console.log(selectedSeats)
+                }
+            });
+        });
+
+        function getStyle(el, styleProp) {
+            if (el.currentStyle)
+                return el.currentStyle[styleProp];
+            return document.defaultView.getComputedStyle(el, null)[styleProp];
+        }
+
+        // seats.forEach(row => {
+        //     var role = document.createElement('div');
+        //     role.classList.add("row");
+        //     row.forEach(st => {
+        //         var seat = document.createElement("div");
+        //         seat.classList.add("seat");
+        //         if (st != "") {
+        //             seat.innerHTML = `<div>${st}</div>`;
+        //             if (st == "D")
+        //                 seat.children[0].classList.add("driver");
+        //             else if (st == "DOOR")
+        //                 seat.children[0].classList.add("door");
+        //             else {
+        //                 seat.children[0].classList.add("passenger");
+        //                 seat.children[0].classList.add("notTaken");
+        //             }
+        //         }
+        //         role.append(seat);
+        //     })
+        //     seatDom.append(role);
+        // });
+    </script>

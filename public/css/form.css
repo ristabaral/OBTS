@@ -1,0 +1,70 @@
+/* * {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    background-color: rgb(197, 244, 252);
+    height: 100vh;
+    background-size: cover;
+    background-position: center;
+} */
+
+div.main {
+    width: 400px;
+    margin: 0px auto 0px auto;
+}
+
+h2 {
+    text-align: center;
+    padding: 15px;
+    font-family: sans-serif;
+}
+
+div.register {
+    background: linear-gradient(40deg, #2096ff, #05ffa3) !important;
+    width: 100%;
+    font-size: 18px;
+    border-radius: 10px;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    box-shadow: 2px 2px 15px rgba(0, 0, 0, 0.3);
+    color: rgb(7, 7, 7);
+}
+
+form#register {
+    margin: 40px;
+}
+
+label {
+    font-family: sans-serif;
+    font-size: 18px;
+}
+
+input#name {
+    width: 300px;
+    border: 1px solid #ddd;
+    border-radius: 3px;
+    outline: 0;
+    padding: 7px;
+    background-color: #ffff;
+}
+
+form .primary button {
+    height: 100%;
+    width: 100%;
+    padding: 10px;
+    background: green;
+    border: none;
+    border: 1px solid rgba(3, 151, 10, 0.555);
+    color: rgb(235, 220, 220);
+    font-size: 18px;
+    font-weight: 500;
+    letter-spacing: 1px;
+    cursor: pointer;
+    box-shadow: 1px 1px 5px white;
+    */
+}
+
+form .primary button:hover {
+    background-color: rgb(77, 0, 128);
+}

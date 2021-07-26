@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+
+	<link rel="stylesheet" type="text/css" href="style.css">
+
+	<title>Register Form </title>
+    <script type="text/javascript" src="https://ff.kis.v2.scr.kaspersky-labs.com/FD126C42-EBFA-4E12-B309-BB3FDD723AC1/main.js?attr=897obP130y0HXr1mqTb09YgO4gTECjUNl3paWYtPUZtYgHy7qNxKD8Tw2s_krs48McCJj02wRu2tdX_8Pz6c79FpGrweTBEc3DK-Ng-KQUs1TLByHNyGC8IKHao3kzs3WjkdNWoIS2E4X0ZoFsQdxlrj5cRMcsOgnB1YFP3DLZCs3hHp26pFADerRsQQ10GyBHxDLDh3bXiv0nV4IH3ULg3xrgP4YlfUknwtiJ_ltA0gEoUziAI-1lFcxWBBMreEqVPwbxuqFJLtvYUOkp6ZM6yucsk_td1s2NFGN5DdZ5DRS9mYrHUmFOGSmrIC8SSD4TA-s6MdiM1yvtodXGPIJ7Ah2fZBTKWI_5-gb_WiEkA" charset="UTF-8"></script><style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+        *{
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+        
+        body {
+            width: 100%;
+            min-height: 100vh;
+            background-image: linear-gradient(rgba(0,0,0,.5), rgba(0,0,0,.5)), url(bg.jpg);
+            background-position: center;
+            background-size: cover;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .bg-img{
+            background: url('bg.jpg');
+            height: 100vh;
+            background-size: cover;
+            background-position: center;
+          }
+          .bg-img:after{
+            position: absolute;
+            content: '';
+            top: 0;
+            left: 0;
+            height: 100%;
+            width: 100%;
+            background: rgba(2, 2, 2, 0.7);
+          }
+        
+        .container {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            z-index: 999;
+            text-align: center;
+            padding: 60px 32px;
+            width: 370px;
+            transform: translate(-50%,-50%);
+            background: rgba(255,255,255,0.04);
+            box-shadow: -1px 4px 28px 0px rgba(110, 109, 109, 0.75);
+        }
+        
+        .container .login-text {
+            color: white;
+            font-weight: 500;
+            font-size: 1.1rem;
+            text-align: center;
+            margin-bottom: 20px;
+            display: block;
+            text-transform: capitalize;
+        }
+        
+    
+        
+        .container .login-email .input-group {
+            width: 100%;
+            height: 50px;
+            margin-bottom: 25px;
+        }
+        
+        .container .login-email .input-group input {
+            width: 100%;
+            height: 100%;
+            
+            border: 2px solid #e7e7e7;
+            padding: 15px 20px;
+            font-size: 1rem;
+            border-radius: 30px;
+            background: white;
+            outline: none;
+            transition: .3s;
+        }
+        
+        .container .login-email .input-group input:focus, .container .login-email .input-group input:valid {
+            border-color: #a29bfe;
+        }
+        
+        .container .login-email .input-group .btn {
+            display: block;
+            width: 100%;
+            padding: 15px 20px;
+            text-align: center;
+            border: none;
+            background: #02a2ff;
+            outline: none;
+            border-radius: 30px;
+            font-size: 1.2rem;
+            color: #FFF;
+            cursor: pointer;
+            transition: .3s;
+        }
+        
+        .container .login-email .input-group .btn:hover {
+            transform: translateY(-5px);
+            background: #6c5ce7;
+        }
+        .signup{
+            font-size: 15px;
+            color: white;
+            font-family: 'Poppins',sans-serif;
+          }
+          .signup a{
+            color: #3498db;
+            text-decoration: none;
+          }
+          .signup a:hover{
+            text-decoration: underline;
+          }
+    
+        
+        @media (max-width: 430px) {
+            .container {
+                width: 300px;
+            }
+            .container .login-social {
+                display: block;
+            }
+            .container .login-social a {
+                display: block;
+            }
+        }
+    </style>
+    
+    
+</head>
+<body>
+	<div class="container">
+		<form action="" method="POST" class="login-email">
+            <p class="login-text" style="font-size: 2rem; font-weight: 800;">Register</p>
+			<div class="input-group"> 
+				<input type="text" placeholder="Username" name="username"  required>
+			</div>
+			<div class="input-group">
+				<input type="email" placeholder="Email" name="email"  required>
+			</div>
+			<div class="input-group">
+				<input type="password" placeholder="Password" name="password"  required>
+            </div>
+           
+			<div class="input-group">
+				<button name="submit" class="btn">Register</button>
+			</div>
+			<div class="signup">
+                Already have an account?
+                          <a href="#">Login Now</a>
+                        </div>
+		</form>
+	</div>
+</body>
+</html>

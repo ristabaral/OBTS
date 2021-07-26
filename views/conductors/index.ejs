@@ -1,0 +1,47 @@
+<%- include('../partials/operatorNav.ejs') %>
+
+    <link rel="stylesheet" href="/css/table.css">
+
+    <div style="display: flex;justify-content: space-between;">
+        <div>
+            <h1>All Conductors</h1>
+        </div>
+        <div style="padding-top: 10px;">
+            <a href="/api/dashboard/addconductor"><button>Add Conductor</button></a>
+        </div>
+    </div>
+
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th scope="col">#</th>
+                <th scope="col">Name</th>
+                <th scope="col">Phone</th>
+                <th scope="col">Bus</th>
+            </tr>
+        </thead>
+        <% documents.forEach((doc, index)=>{ %>
+            <tbody>
+                <tr>
+                    <th scope="row">
+                        <%= index+1 %>
+                    </th>
+                    <td>
+                        <%= doc.name %>
+                    </td>
+                    <td>
+                        <%= doc.phone %>
+                    </td>
+                    <td>
+                        <%= doc.busName %>
+                    </td>
+                    <td>
+                        <a href="#"><button>View</button></a>
+                        <a href="/api/dashboard/conductors/update/<%= doc._id %>"><button>Edit</button></a>
+                        <a href="/api/dashboard/conductors/delete/<%= doc._id %>"><button>Delete</button></a>
+                    </td>
+                </tr>
+            </tbody>
+            <% }) %>
+    </table>

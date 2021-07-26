@@ -1,0 +1,267 @@
+<%- include('./partials/nav') %>
+
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        #seats {
+            display: flex;
+            flex-direction: column;
+            height: 90vh;
+            width: 20vw;
+            margin: 0 auto;
+            /* margin-top: 10vh; */
+            background-color: aqua;
+        }
+        
+        .row {
+            margin: 0;
+            display: flex;
+            height: 100%;
+            width: 100%;
+            justify-content: center;
+            align-items: center;
+        }
+        
+        .row>div {
+            display: flex;
+            align-self: center;
+            flex: 1;
+            justify-content: center;
+            align-items: center;
+            /* margin-bottom: 1px;
+            margin-right: 1px; */
+            /* margin: 0px 1px 1px px; */
+        }
+        
+        .door {
+            background-color: Transparent;
+            background-repeat: no-repeat;
+            border: none;
+            cursor: none;
+            overflow: hidden;
+            outline: none;
+        }
+        
+        .driver {
+            background-color: red;
+        }
+        
+        .passenger.notTaken {
+            background-color: #06f111;
+        }
+        
+        .passenger.taken {
+            background-color: rgb(16, 16, 255);
+        }
+        
+        .passenger.booked {
+            background-color: rgb(145, 90, 14);
+        }
+        
+        .seat>div {
+            padding: 1rem;
+            display: inline-block;
+            align-self: center;
+            cursor: pointer;
+            /* height: 5px;
+            width: 5px; */
+        }
+        
+        form {
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            margin: 3px 0;
+            padding: 5px;
+        }
+        
+        input {
+            background: lime;
+            border-radius: 15px;
+            height: 5rem;
+            width: 10rem;
+        }
+        
+        form>button.checkout {
+            width: 100px;
+        }
+    </style>
+
+    <div class="top">
+        <div class="front">
+            <div id="seats"></div>
+
+        </div>
+        <div class="line"></div>
+        <div class="details">Booking Details
+            <div class="section">
+                <h3>selected seats</h3><em id="data"> </em>
+                <p id="cash"> </p>
+                <br>
+                <form action="/api/seats/booking" method="POST">
+                    <input type="hidden" name="scheduleId" id="scheduleId" value="<%= schedule._id %>">
+                    <input type="hidden" name="selectedSeats" id="selectedSeats" value="">
+                    <input type="hidden" name="price" id="price" value="<%= schedule.price %>">
+                    <input type="submit" id="checkout" class="btn btn-success checkout" value="Checkout">
+                </form>
+                <div class="standard">
+                    <li class="spain" id="spain"></li>selected seat
+                    <li class="spain" id="usa"></li>Available seat
+                    <li class="spain" id="kenya"></li>Already booked
+                </div>
+            </div>
+        </div>
+
+    </div>
+    <p id="help"></p>
+    <p id="support"></p>
+    </div>
+    <script>
+        var mySeats = <%- JSON.stringify(documents) %>;
+        var price = <%- JSON.stringify(schedule.price) %>;
+
+        var selectedSeats = [];
+
+        var seats = [
+            ["DOOR", "", "", "", "D"],
+            ["S01", "S02", "", "S03", "S04"],
+            ["S05", "S06", "", "S07", "S08"],
+            ["S09", "S10", "", "S11", "S12"],
+            ["S13", "S14", "", "S15", "S16"],
+            ["S17", "S18", "", "S19", "S20"],
+            ["S21", "S22", "", "S23", "S24"],
+            ["S25", "S26", "", "S27", "S28"],
+            ["S29", "S30", "", "S31", "S32"],
+            ["S33", "S34", "", "S35", "S36"],
+            ["S37", "S38", "", "S39", "S40"],
+            ["S41", "S42", "S43", "S44", "S45"]
+        ];
+
+        const changeRoles = (seat) => {
+            seat.children[0].classList.remove("notTaken");
+            seat.children[0].classList.add("taken");
+
+            var button = document.getElementById("checkout");
+            if (selectedSeats.length < 1) {
+                button.setAttribute("type", "hidden");
+            } else {
+                button.setAttribute("type", "submit");
+            }
+        }
+
+        const seatDom = document.getElementById("seats");
+        seats.forEach(row => {
+            var role = document.createElement('div');
+            role.classList.add("row");
+            row.forEach(st => {
+                var seat = document.createElement("div");
+                seat.classList.add("seat");
+                if (st != "") {
+                    seat.innerHTML = `<div>${st}</div>`;
+                    mySeats.forEach(mst => {
+                        if (mst.number == st && mst.status == true && mst.number != 'DOOR' && mst.number != "D") {
+                            seat.children[0].classList.add("passenger");
+                            seat.children[0].classList.add("notTaken");
+                        } else if (mst.number == st && mst.status == false && mst.number != 'DOOR' && mst.number != "D") {
+                            seat.children[0].classList.add("passenger");
+                            seat.children[0].classList.add("booked");
+                        } else if (mst.number == "D")
+                            seat.children[0].classList.add("driver");
+                        else
+                            seat.children[0].classList.add("door");
+                    })
+                }
+                role.append(seat);
+            })
+            seatDom.append(role);
+        });
+
+        window.onload = () => {
+            document.querySelectorAll('div.seat').forEach((seat) => {
+                // console.log(seat);
+                seat.onclick = function() {
+                    changeRoles(seat)
+                };
+            });
+
+            var button = document.getElementById("checkout");
+            if (selectedSeats.length < 1) {
+                button.setAttribute("type", "hidden");
+            } else {
+                button.setAttribute("type", "submit");
+            }
+        }
+
+
+        const elements = document.getElementsByClassName("passenger");
+
+        Array.from(elements).forEach(function(element) {
+            element.addEventListener('click', () => {
+                var bgColor = getStyle(element, 'backgroundColor');
+
+                //If seat is selected
+                if (bgColor == "rgb(6, 241, 17)") {
+                    console.log('selected')
+                        // Update the selected seats data on page
+                        // document.getElementById("data").innerHTML = "";
+                    let seat = element.innerHTML;
+                    selectedSeats.push(seat);
+
+                    let ele = document.getElementById('data');
+                    ele.innerHTML += seat + ', ';
+
+                    document.getElementById("selectedSeats").value = selectedSeats.toString();
+                    total();
+
+                    // Change seat color to blue
+                    element.style.backgroundColor = 'rgb(16, 16, 255)'
+                    console.log(selectedSeats)
+                }
+
+                //If seat is deselected
+                if (bgColor == "rgb(16, 16, 255)") {
+                    element.style.backgroundColor = "rgb(6, 241, 17)";
+
+                    document.getElementById("data").innerHTML = "";
+                    var seat = element.innerHTML;
+                    if (selectedSeats.length > 0) {
+                        if (selectedSeats.includes(seat)) {
+                            var index = selectedSeats.indexOf(seat);
+                            if (index > -1) {
+                                selectedSeats.splice(index, 1);
+                            }
+                        }
+                        for (let i = 0; i < selectedSeats.length; i++) {
+                            document.getElementById("data").innerHTML += selectedSeats[i] + ', ';
+                        }
+
+                    } else {
+                        document.getElementById("data").innerHTML = "";
+                    }
+                    document.getElementById("selectedSeats").value = seats.toString();
+                    total();
+
+                    console.log(selectedSeats)
+                }
+            });
+        });
+
+        function getStyle(el, styleProp) {
+            if (el.currentStyle)
+                return el.currentStyle[styleProp];
+            return document.defaultView.getComputedStyle(el, null)[styleProp];
+        }
+
+
+        function total() {
+            var totalprice = selectedSeats.length * price;
+            if (totalprice != 0)
+                document.getElementById("cash").innerHTML = totalprice + " Rupees";
+            else
+                document.getElementById("cash").innerHTML = "";
+        }
+    </script>

@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Print Ticket</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css.css">
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="css/ticket.css">
+
+</head>
+
+<body>
+
+    <div class="alltickets">
+        <div class="card">
+
+            <div class="card-image">
+                <img src="{{ticket.image}}" width="100%" alt="image">
+            </div>
+            <div class="card-text">
+
+                <div class="bus">
+                    <div class="busDetail">
+                        <span>Bus Name</span> {{ticket.busName}}
+                    </div>
+
+                    <div class="busDetail">
+                        <span>Bus Number</span> {{ticket.busNo}}
+                    </div>
+                </div>
+
+                <span class="date">Passenger Name</span>
+                <h2>
+                    {{ticket.pname}}
+                </h2><br>
+                <h3>Booking pID: {{ticket.booking}}
+                </h3><br>
+                <h4>Price: {{ticket.price}}
+                </h4>
+                <div class="place" style="justify-content: space-around;">
+
+                    <div class="city" style="display: inline;">
+                        {{ticket.from}}
+                    </div>
+
+                    <div class="arrow" style="display: inline;"><i class="fa fa-exchange fa-2x" aria-hidden="true"></i></div>
+
+                    <div class="city1" style="display: inline;">
+                        {{ticket.to}}
+                    </div>
+                </div>
+                <div class="seat">
+                    <div class="float">Date
+                        <i class="fa fa-calendar"></i><br> {{ticket.date}}
+                    </div>
+                    <div class="float">
+                        Time<i class="fa fa-clock-o"></i><br> {{ticket.time}}
+                    </div>
+                    <div class="float">
+                        Seat<i class="fa fa-sitemap"></i><br> {{ticket.seat}}
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

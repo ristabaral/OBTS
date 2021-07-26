@@ -1,0 +1,147 @@
+<%- include('../partials/operatorNav.ejs') %>
+    <link rel="stylesheet" href="/css/table.css">
+
+    <script type="text/javascript">
+        $(document).ready(function() {
+            // Activate tooltip
+            $('[data-toggle="tooltip"]').tooltip();
+
+            // Select/Deselect checkboxes
+            var checkbox = $('table tbody input[type="checkbox"]');
+            $("#selectAll").click(function() {
+                if (this.checked) {
+                    checkbox.each(function() {
+                        this.checked = true;
+                    });
+                } else {
+                    checkbox.each(function() {
+                        this.checked = false;
+                    });
+                }
+            });
+            checkbox.click(function() {
+                if (!this.checked) {
+                    $("#selectAll").prop("checked", false);
+                }
+            });
+        });
+    </script>
+
+    <body>
+        <div class="bg-img">
+            <div class="container-xl">
+                <div class="table-responsive">
+                    <div class="table-wrapper">
+                        <div class="table-title">
+                            <div class="row">
+                                <div class="col-sm-8">
+                                    <a href="/api/dashboard/addschedule" class="btn btn-success" data-toggle="modal"><i class="material-icons">&#xE147;</i> <span>Add New Schedule
+                            </span></a>
+                                </div>
+                                <form class="search">
+                                    <div class="col-sm-4">
+                                        <div class="search-box">
+                                            <i class="material-icons">&#xE8B6;</i>
+                                            <input type="text" class="form-control" id="myInput" onkeyup="myFunction()" placeholder="Search&hellip;">
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                        <table id="myTable" class="table table-striped table-hover table-bordered">
+                            <thead>
+                                <tr class="header">
+                                    <th scope="col">SN</th>
+                                    <th scope="col">Depart Date</th>
+                                    <th scope="col">Depart Time</th>
+                                    <th scope="col">Arrival Date</th>
+                                    <th scope="col">Arrival Time</th>
+                                    <th scope="col">Pickup Address</th>
+                                    <th scope="col">Dropoff Address</th>
+                                    <th scope="col">Bus Name</th>
+                                    <th scope="col">Price</th>
+                                </tr>
+                            </thead>
+                            <% documents.forEach((doc,index)=>{ %>
+                                <tbody>
+                                    <tr>
+                                        <td>
+                                            <%= index+1 %>
+                                        </td>
+                                        <td>
+                                            <%= doc.depart %>
+                                        </td>
+                                        <td>
+                                            <%= doc.departTime %>
+                                        </td>
+                                        <td>
+                                            <%= doc.arrival %>
+                                        </td>
+                                        <td>
+                                            <%= doc.arrivalTime %>
+                                        </td>
+                                        <td>
+                                            <%= doc.pickup %>
+                                        </td>
+                                        <td>
+                                            <%= doc.dropoff %>
+                                        </td>
+                                        <td>
+                                            <%= doc.busName %>
+                                        </td>
+                                        <td>
+                                            <%= doc.price %>
+                                        </td>
+                                        <td>
+
+                                            <a href="/api/dashboard/schedules/update/<%= doc._id %>" class="edit" title="Edit" data-toggle="modal"><i class="material-icons">&#xE254;</i></a>
+                                            <a href="/api/dashboard/schedules/delete/<%= doc._id %>" class="delete" title="Delete" data-toggle="tooltip"><i class="material-icons">&#xE872;</i></a>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                                <% }) %>
+                        </table>
+                        <div class="clearfix">
+
+                            <ul class="pagination">
+                                <li class="page-item disabled"><a href="#"><i class="fa fa-angle-double-left"></i></a></li>
+                                <li class="page-item"><a href="#" class="page-link">1</a></li>
+                                <li class="page-item"><a href="#" class="page-link">2</a></li>
+                                <li class="page-item active"><a href="#" class="page-link">3</a></li>
+                                <li class="page-item"><a href="#" class="page-link">4</a></li>
+                                <li class="page-item"><a href="#" class="page-link">5</a></li>
+                                <li class="page-item"><a href="#" class="page-link"><i class="fa fa-angle-double-right"></i></a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <script>
+            function myFunction() {
+                // Declare variables
+                var input, filter, table, tr, td, i, txtValue;
+                input = document.getElementById("myInput");
+                filter = input.value.toUpperCase();
+                table = document.getElementById("myTable");
+                tr = table.getElementsByTagName("tr");
+
+                // Loop through all table rows, and hide those who don't match the search query
+                for (i = 0; i < tr.length; i++) {
+                    td = tr[i].getElementsByTagName("td")[1];
+                    console.log('here', td)
+                    if (td) {
+                        txtValue = td.textContent || td.innerText;
+                        if (txtValue.toUpperCase().indexOf(filter) > -1) {
+                            tr[i].style.display = "";
+                        } else {
+                            tr[i].style.display = "none";
+                        }
+                    }
+                }
+            }
+        </script>
+
+    </body>
+
+    </html>

@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ticket</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+    <style>
+        body {
+            background-color: #ffffff;
+            background-repeat: no-repeat;
+        }
+        
+        .container {
+            border-bottom: solid, rgba(0, 0, 0, 0.6);
+            margin: 2px 0 2px 5px;
+            font-size: 18px;
+            min-width: 600px;
+            max-width: 600px;
+            border-radius: 5px 5px 0 0;
+            overflow: hidden;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
+            background: linear-gradient(40deg, #2096ff, #05ffa3) !important;
+        }
+        
+        .container thead tr {
+            border-bottom: 1px #ffffff;
+            color: #ffffff;
+            text-align: left;
+            font-weight: bold;
+        }
+        
+        .container .head {
+            border-bottom: 1px #ffffff;
+            padding: 12px 15px;
+        }
+        
+        .container td {
+            padding: 12px 15px;
+            border-bottom: 1px solid #ffffff;
+        }
+        
+        .container tbody tr {
+            border-bottom: 1px solid #ffffff;
+            color: #ffffff;
+        }
+        
+        .container tbody tr:last-of-type {
+            border-bottom: 2px solid rgba(0, 0, 0, 0.6);
+        }
+    </style>
+
+</head>
+
+<body>
+
+    <h1> Your Booking </h1>
+
+    <!-- <h1> Booking </h1> -->
+    <table class="container">
+        <thead>
+            <tr>
+                <th class="head">Booking Details</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>Booking ID</td>
+                <td>
+                    {{data.booking}}
+                </td>
+            </tr>
+
+            <tr>
+                <td>Booker Name</td>
+                <td>
+                    {{data.booker}}
+                </td>
+            </tr>
+            <tr>
+                <td>Bus No.</td>
+                <td>
+                    {{data.busNo}}
+                </td>
+            </tr>
+
+            <tr>
+                <td>Bus Name</td>
+                <td>
+                    {{data.busName}}
+                </td>
+            </tr>
+            <tr>
+                <td>From</td>
+                <td>
+                    {{data.from}}
+                </td>
+            </tr>
+            <tr>
+                <td>To</td>
+                <td>
+                    {{data.to}}
+                </td>
+            </tr>
+
+            <tr>
+                <td>Entry Point</td>
+                <td>
+                    {{data.checkpoint}}
+                </td>
+            </tr>
+
+            <tr>
+                <td>Number of Seats</td>
+                <td>
+                    {{data.noOfSeats}}
+                </td>
+            </tr>
+            <tr>
+                <td>Amount</td>
+                <td>
+                    {{data.amount}}
+                </td>
+            </tr>
+            <tr>
+                <td>Date</td>
+                <td>
+                    {{data.date}}
+                </td>
+            </tr>
+            <tr>
+                <td>Status</td>
+                <td>
+                    {{#if data.status }} Paid {{else}} Pending... {{/if}}
+                </td>
+            </tr>
+        </tbody>
+    </table>
+
+</body>
+
+</html>

@@ -1,0 +1,112 @@
+<%- include('./partials/nav') %>
+
+    <div class="card" style="width: 500px;">
+        <div class="card-header bg-transparent border-success text-success" style="font-size: 20px;">Booking Ticket</div>
+        <div class="card-body">
+            <table id="myTable" class="table table-striped table-hover table-bordered">
+                <thead>
+                    <tr class="header">
+                        <th scope="col"></th>
+                        <th scope="col"></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Booking ID</td>
+                        <td>
+                            <%= data.booking %>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Booker Name</td>
+                        <td>
+                            <%= data.booker %>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Bus No</td>
+                        <td>
+                            <%= data.busNo %>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Bus Name</td>
+                        <td>
+                            <%= data.busName %>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>From</td>
+                        <td>
+                            <%= data.from %>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>To</td>
+                        <td>
+                            <%= data.to %>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Entry Point</td>
+                        <td>
+                            <%= data.checkpoint %>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Number of seats</td>
+                        <td>
+                            <%= data.noOfSeats %>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Amount</td>
+                        <td>
+                            <%= data.amount %>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Date</td>
+                        <td>
+                            <%= data.date %>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Status</td>
+                        <td>
+                            <% if(!data.status){ %>
+                                Pending...
+                                <% }else{ %>
+                                    Paid
+                                    <% } %>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            <div class="card-footer" style="display: flex;">
+                <div>
+                    <img src="/images/esewa-logo.png" class="card-img-top">
+                </div>
+                <div>
+                    <form action="https://uat.esewa.com.np/epay/main" method="POST">
+                        <input value="<%= data.amount %>" name="tAmt" type="hidden">
+                        <input value="<%= data.amount %>" name="amt" type="hidden">
+                        <input value="0" name="txAmt" type="hidden">
+                        <input value="0" name="psc" type="hidden">
+                        <input value="0" name="pdc" type="hidden">
+                        <input value="epay_payment" name="scd" type="hidden">
+                        <input value="<%= data.booking %>" name="pid" type="hidden">
+                        <input value="http://localhost:3000/api/booking/payment_success?q=su" type="hidden" name="su">
+                        <input value="http://localhost:3000/api/booking/payment_failed?q=fu" type="hidden" name="fu">
+                        <button class="btn btn-info" type="submit" style="background: lime; width: 250px;margin-top: 50px;">Confirm Payment</button>
+                    </form>
+
+                    <!-- testing assuming the payment is successful. -->
+                    <!-- <form action="/api/dashboard/testbooking" method="POST">
+                        <input type="submit" class="btn btn-info" style="background: lime; width: 250px;margin-top: 50px;" value="Confirm Payment">
+                    </form> -->
+                </div>
+            </div>
+        </div>
+
+    </div>

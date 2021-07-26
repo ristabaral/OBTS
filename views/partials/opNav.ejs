@@ -1,0 +1,71 @@
+<div class="navigations">
+    <ul>
+        <li class="navlist">
+            <div class="newone">
+                <div>
+                    <i class="fa fa-user-circle  fa-3x" aria-hidden="true"></i>
+                </div>
+                <div>
+                    <span class="uname"><%= user.name.toUpperCase() %> BHATTA</span>
+                </div>
+            </div>
+        </li>
+
+        <li class="navlistse">
+            <a href="/api/dashboard">
+                <i class="fa fa-tachometer" aria-hidden="true"></i> Dashboard
+            </a>
+        </li>
+
+
+        <li class="navlistse">
+            <a href="/api/bookers">
+                <i class="fa fa-users" aria-hidden="true"></i> Customers
+            </a>
+        </li>
+
+
+        <li class="navlistse">
+            <a href="/api/dashboard/bookings/1">
+                <i class="fa fa-ticket" aria-hidden="true"></i> Bookings
+            </a>
+        </li>
+
+        <li class="navlistse">
+            <a href="/api/dashboard/buses">
+                <i class="fa fa-bus" aria-hidden="true"></i> Buses
+            </a>
+        </li>
+
+        <li class="navlistse">
+            <a href="#">
+                <i class="fa fa-sitemap" aria-hidden="true"></i> Seats
+            </a>
+        </li>
+
+        <li class="navlistse">
+            <a href="#">
+                <i class="fa fa-check-circle" aria-hidden="true"></i> Availaibility
+            </a>
+        </li>
+
+        <li class="navlistse">
+            <a href="/api/dashboard/schedules">
+                <i class="fa fa-road" aria-hidden="true"></i> Routes
+            </a>
+        </li>
+
+        <li class="navlistse">
+            <a href="/api/dashboard/reports">
+                <i class="fa fa-file-text" aria-hidden="true"></i> Reports
+            </a>
+        </li>
+
+        <li>
+            <form action="/api/logout/<%= refresh_token %>" method="POST">
+                <!-- <input hidden value="<%= refresh_token %>" type="text" name="refresh_token"> -->
+                <button type="submit"><i class="fa fa-sign-out"></i></button>
+            </form>
+        </li>
+    </ul>
+</div>

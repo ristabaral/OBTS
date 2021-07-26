@@ -1,0 +1,30 @@
+<%- include('../partials/operatorNav.ejs') %>
+
+    <div class="row mt-5">
+        <div class="col-md-6 m-auto">
+            <div class="card card-body text-center">
+                <!-- <h1><i class="fab fa-node-js fa-3x"></i></h1> -->
+                <h1>Update Conductor</h1>
+                <hr>
+                <form method="POST" action="/api/dashboard/conductors/update/<%= conductor._id %>">
+                    <div class="mb-3">
+                        <label for="name" class="form-label">Name</label>
+                        <input type="text" class="form-control" value="<%= conductor.name %>" name="name" id="name">
+                    </div>
+                    <div class="mb-3">
+                        <label for="phone" class="form-label">Phone</label>
+                        <input type="text" class="form-control" value="<%= conductor.phone %>" name="phone" id="phone">
+                    </div>
+                    <div style="display:flex; justify-content: space-evenly;">
+                        Bus: <select name="bus">
+                    <% buses.forEach(bus=>{ %>
+                            <option value="<%= bus._id %>"><%= bus.busName %></option>
+                        <% }) %>
+                    </select><br>
+                    </div>
+                    <hr>
+                    <button type="submit" class="btn btn-primary">Submit</button>
+                </form>
+            </div>
+        </div>
+    </div>

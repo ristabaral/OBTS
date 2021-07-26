@@ -1,0 +1,62 @@
+<%- include('./partials/nav') %>
+
+    <div class="payment">
+        <h1>Booking Details</h1>
+
+        <form method="POST" action="/api/booking/confirmseats">
+            <h2>Passenger Information Form</h2>
+            <div>
+                <div style="justify-content: space-between; padding: 3px;">
+                    <label for="" style="margin-right: 70px;">Seat No</label><label for="" style="margin-right: 70px;">Passenger Name</label><label for="">Gender</label>
+                </div>
+                <input type="hidden" name="seats" value="<%= seats %>">
+                <input type="hidden" name="scheduleId" value="<%= scheduleId %>">
+                <% seats.forEach(seat=>{ %>
+                    <div class="passDetails" style="display: flex; justify-content: space-around; margin-bottom: 5px;">
+                        <div class="seatNo">
+                            <input type="hidden" name="seat<%= seat %>" value="<%= seat %>">
+                            <%= seat %>
+                        </div>
+                        <div class="passName"><input type="text" name="passName<%= seat %>" id="passName<%= seat %>" required></div>
+                        <div style="display: flex;">
+                            <div style="margin-right: 15px;">
+                                <input type="radio" name="gender<%= seat %>" value="male"> Male
+                            </div>
+                            <div>
+                                <input type="radio" name="gender<%= seat %>" value="female">Female
+                            </div>
+                        </div>
+                    </div>
+                    <% }) %>
+            </div>
+
+
+            <div class="box">
+                <h2>Booker details</h2>
+                <div class="box">
+                    <input type="text" name="bookerName" placeholder="Full Name" class="name" required>
+                    <i class="fa fa-user icon"></i>
+                </div>
+                <div class="box">
+                    <input type="email" name="email" placeholder="Email" class="name" required>
+                    <i class="fa fa-envelope icon "></i>
+                </div>
+                <div class="box">
+                    <input type="text" name="phone" placeholder="Phone" class="name" required>
+                    <i class="fa fa-phone icon "></i>
+                </div>
+                <div class="box">
+                    <select class="box" name="entryPoint">
+                  <% checkpoints.forEach(c=>{ %>
+                    <option class="name" value="<%= c._id %>"><%= c.checkpoint %></option>
+                  <% }) %>
+              </select>
+                </div>
+            </div>
+
+            <div class="box" style="align-items: center;">
+                <button style="text-align: center;padding:5px;font-size:20px;" type="submit" class="but">Pay Now</button>
+            </div>
+
+        </form>
+    </div>

@@ -1,0 +1,52 @@
+<%- include('../partials/operatorNav.ejs') %>
+
+    <div class="row mt-5">
+        <div class="col-md-6 m-auto">
+            <div class="card card-body text-center">
+                <!-- <h1><i class="fab fa-node-js fa-3x"></i></h1> -->
+                <h1>Update Schedule</h1>
+                <hr>
+                <form method="POST" action="/api/schedules/<%= schedule._id %>">
+                    <div class="mb-3">
+                        <label for="depart" class="form-label">Depart Date</label>
+                        <input type="text" class="form-control" value="<%= schedule.depart %>" name="depart" id="depart" placeholder="YYYY-MM-DD">
+                    </div>
+                    <div class="mb-3">
+                        <label for="depart" class="form-label">Depart Time</label>
+                        <input type="time" class="form-control" value="<%= schedule.departTime %>" name="departTime" id="depart" placeholder="HH:MM">
+                    </div>
+                    <div class="mb-3">
+                        <label for="arrival" class="form-label">Arrival Date</label>
+                        <input type="text" class="form-control" value="<%= schedule.arrival %>" name="arrival" id="arrival" placeholder="YYYY-MM-DD">
+                    </div>
+                    <div class="mb-3">
+                        <label for="arrival" class="form-label">Arrival Time</label>
+                        <input type="time" class="form-control" value="<%= schedule.arrivalTime %>" name="arrivalTime" id="arrival" placeholder="HH:MM">
+                    </div>
+                    <div class="mb-3">
+                        <label for="pickup" class="form-label">Pickup</label>
+                        <input type="text" class="form-control" value="<%= schedule.pickup %>" name="pickup" id="pickup">
+                    </div>
+                    <div class="mb-3">
+                        <label for="dropoff" class="form-label">Dropoff</label>
+                        <input type="text" class="form-control" value="<%= schedule.dropoff %>" name="dropoff" id="dropoff">
+                    </div>
+                    <div class="mb-3">
+                        <label for="price" class="form-label">Price</label>
+                        <input type="number" class="form-control" value="<%= schedule.price %>" name="price" id="price">
+                    </div>
+                    <% if(checkpoints.length > 0){ %>
+                        <div style="display:flex; justify-content: space-evenly;">
+                            <% checkpoints.forEach(chk=>{ %>
+                                <input type="checkbox" name="checkpoints" value="<%= chk._id %>" <%=myCheckpoints.includes(chk._id) ? "checked": "" %> id="checkpoint">
+                                <%= chk.checkpoint %>
+                                    <% }) %>
+                        </div>
+                        <% } %>
+
+                            <hr>
+                            <button type="submit" class="btn btn-primary" style="width: 100px;">Submit</button>
+                </form>
+            </div>
+        </div>
+    </div>

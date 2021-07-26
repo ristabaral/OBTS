@@ -1,0 +1,159 @@
+<%- include('./partials/operatorNav') %>
+
+    <link rel="stylesheet" href="/css/report.css">
+
+    <div class="bg-img">
+        <div class="split left">
+            <div class="card">
+                <div class="container">
+                    <form action="/api/dashboard/booking/reports" method="POST">
+                        <label>From</label>
+                        <br>
+                        <input type="date" name="from1" id="name">
+                        <br> <label>To</label>
+                        <br>
+                        <input type="date" name="from2" id="name">
+                        <input type="hidden" name="page" value="booking">
+                        <br><label>Bus Number</label><br>
+                        <select name="bus">
+                        <option value="All">All Buses</option>
+                        <% buses.forEach(b=>{ %>
+                            <option value="<%= b._id %>"><%= b.busNo %></option>
+                        <% }) %>
+                    </select>
+                        <br><br>
+                        <input type="submit" value="Booking Reports" name="submit" id="submit">
+                    </form>
+                </div>
+            </div><br>
+            <div class="card">
+                <div class="container">
+                    <form action="/api/dashboard/booking/reports" method="POST">
+                        <label>From</label>
+                        <br>
+                        <input type="date" name="from" id="name">
+                        <br>
+                        <label>To</label>
+                        <br>
+                        <input type="date" name="to" id="name">
+                        <br>
+                        <label>Bus Number</label>
+                        <br>
+                        <input type="text" name="bus" id="name" placeholder="Enter your bus number">
+                        <br><br>
+                        <input type="text" name="page" value="booking">
+                        <input type="submit" value="Submit" name="submit" id="submit">
+                    </form>
+                </div>
+            </div><br>
+            <div class="card">
+                <div class="container">
+                    <label>From </label>
+                    <br>
+                    <input type="date" name="depart" id="name">
+                    <br>
+                    <label>To</label>
+                    <br>
+                    <input type="date" name="arrival" id="name">
+                    <br>
+                    <label>Bus Number</label>
+                    <br>
+                    <input type="text" name="email" id="name" placeholder="Enter your bus number">
+                    <br><br>
+                    <input type="submit" value="Submit" name="submit" id="submit">
+                </div>
+            </div>
+        </div>
+        <div class="split right">
+            <div class="table-wrapper">
+                <% if(page == "index"){ %>
+                    <img src="/images/bus.jpg" height="550px" width="100%" alt="">
+                    <% }else{ %>
+                        <table id="myTable" class="table table-striped table-hover table-bordered">
+                            <thead>
+                                <tr class="header">
+                                    <th>SN</th>
+                                    <th>Bus Name</th>
+                                    <th>Bus Number </th>
+                                    <th>Depart Date</th>
+                                    <th>Arrival Date </th>
+                                    <th>depart Time</th>
+                                    <th>Arrival Time </th>
+                                    <th>Checkpoints</th>
+
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>1</td>
+                                    <td>Makalu</td>
+                                    <td>ba 2 pa 354</td>
+                                    <td>25/12/2078</td>
+                                    <td>26/12/2078</td>
+                                    <td>11:23 Am</td>
+                                    <td>1:50 Pm</td>
+                                    <td>Mustang</td>
+
+                                </tr>
+                                <tr>
+                                    <td>2</td>
+                                    <td>Sagarmatha</td>
+                                    <td>ma 1 pa 354</td>
+                                    <td>25/12/2078</td>
+                                    <td>26/12/2078</td>
+                                    <td>11:23 Am</td>
+                                    <td>1:50 Pm</td>
+                                    <td>Mustang</td>
+
+                                </tr>
+                                <tr>
+                                    <td>3</td>
+                                    <td>Nagarik</td>
+                                    <td>ba 2 pa 354</td>
+                                    <td>25/3/2078</td>
+                                    <td>26/3/2078</td>
+                                    <td>11:23 Am</td>
+                                    <td>1:50 Pm</td>
+                                    <td>Mustang</td>
+
+                                </tr>
+                                <tr>
+                                    <td>4</td>
+                                    <td>Suryodaya</td>
+                                    <td>ba 2 pa 354</td>
+                                    <td>25/12/2078</td>
+                                    <td>26/12/2078</td>
+                                    <td>11:23 Am</td>
+                                    <td>1:50 Pm</td>
+                                    <td>Mustang</td>
+
+                                </tr>
+                                <tr>
+                                    <td>5</td>
+                                    <td>MEro bau ko gadhi</td>
+                                    <td>ma 1 pa 354</td>
+                                    <td>25/12/2078</td>
+                                    <td>26/12/2078</td>
+                                    <td>11:23 Am</td>
+                                    <td>1:50 Pm</td>
+                                    <td>Mustang</td>
+
+                                </tr>
+                                <tr>
+                                    <td>6</td>
+                                    <td>Purwanchal</td>
+                                    <td>ma 1 pa 354</td>
+                                    <td>25/12/2078</td>
+                                    <td>26/12/2078</td>
+                                    <td>11:23 Am</td>
+                                    <td>1:50 Pm</td>
+                                    <td>Mustang</td>
+
+                                </tr>
+
+                            </tbody>
+                        </table>
+                        <% } %>
+            </div>
+        </div>
+    </div>

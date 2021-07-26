@@ -1,0 +1,147 @@
+<link rel="stylesheet" href="/css/dashboard.css">
+
+
+
+<h1>On My Way Travels</h1>
+
+<!-- <%- include('./partials/opNav.ejs', {refresh_token:refresh_token}) %> -->
+<%-include("./partials/opNav.ejs", {refresh_token:refresh_token}) %>
+
+    <!-- <div class="wrappere">
+    <h2>Admin</h2>
+    <img class="img" src="/images/admin.png" width="40px" height="40px" alt="">
+</div> -->
+
+    <main>
+        <div class="main__containers">
+            <!-- MAIN TITLE STARTS HERE -->
+
+            <div class="main__title">
+                <img src="/images/admin1.jpg" alt="" />
+                <div class="main__greeting">
+                    <h1>Hello Admin</h1>
+                    <p>Welcome to your dashboard</p>
+                </div>
+            </div>
+
+            <!-- MAIN TITLE ENDS HERE -->
+
+            <!-- MAIN CARDS STARTS HERE -->
+            <div class="main__cardse">
+                <div class="carde">
+                    <i class="fa fa-users fa-4x" aria-hidden="true"></i>
+                    <div class="card_inner">
+                        <a href="/api/bookers">
+                            <p class="text-primary-p">Customers</p>
+                        </a>
+                        <span class="font-bold text-title">578</span>
+                    </div>
+                </div>
+
+                <div class="carde">
+                    <i class="fa fa-ticket fa-4x" aria-hidden="true"></i>
+                    <div class="card_inner">
+                        <a href="/api/dashboard/bookings/1">
+                            <p class="text-primary-p">Bookings</p>
+                        </a>
+                        <span class="font-bold text-title">2467</span>
+                    </div>
+                </div>
+
+                <div class="carde">
+                    <i class="fa fa-calendar fa-4x" aria-hidden="true"></i>
+                    <div class="card_inner">
+                        <a href="/api/dashboard/reports">
+                            <p class="text-primary-p">Reports</p>
+                        </a>
+                        <span class="font-bold text-title">300</span>
+                    </div>
+                </div>
+
+                <div class="carde">
+                    <i class="fa fa-bus fa-4x text-blue" aria-hidden="true"></i>
+                    <div class="card_inner">
+                        <a href="/api/dashboard/buses">
+                            <p class="text-primary-p">Buses</p>
+                        </a>
+                        <span class="font-bold text-title">645</span>
+                    </div>
+                </div>
+
+                <div class="carde">
+                    <i class="fa fa-sitemap fa-4x" aria-hidden="true"></i>
+                    <div class="card_inner">
+                        <a>
+                            <p class="text-primary-p">Seats</p>
+                        </a>
+                        <span class="font-bold text-title">8</span>
+                    </div>
+                </div>
+
+                <div class="carde">
+                    <i class="fa fa-road fa-4x" aria-hidden="true"></i>
+                    <div class="card_inner">
+                        <a href="/api/dashboard/schedules">
+                            <p class="text-primary-p">Routes</p>
+                        </a>
+                        <span class="font-bold text-title">3</span>
+                    </div>
+                </div>
+
+                <div class="carde">
+                    <i class="fa fa-id-card fa-4x" aria-hidden="true"></i>
+                    <div class="card_inner">
+                        <a>
+                            <p class="text-primary-p">Drivers</p>
+                        </a>
+                        <span class="font-bold text-title">5</span>
+                    </div>
+                </div>
+                <div class="carde">
+                    <i class="fa fa-ban fa-4x" aria-hidden="true"></i>
+                    <div class="card_inner">
+                        <a>
+                            <p class="text-primary-p">cancel</p>
+                        </a>
+                        <span class="font-bold text-title">2</span>
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="charts">
+                <div class="charts__right">
+                    <div class="charts__right__title">
+                        <div>
+                            <h1>Stats Reports</h1>
+                            <p>COMPANY NAME</p>
+                        </div>
+                        <i class="fa fa-usd" aria-hidden="true"></i>
+                    </div>
+
+                    <div class="charts__right__cards">
+                        <div class="card1">
+                            <h1>Income</h1>
+                            <p>$75,300</p>
+                        </div>
+
+                        <div class="card2">
+                            <h1>Revenue</h1>
+                            <p>$124,200</p>
+                        </div>
+
+                        <div class="card3">
+                            <h1>Users</h1>
+                            <p>3900</p>
+                        </div>
+
+                        <div class="card4">
+                            <h1>Reached</h1>
+                            <p>188</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- CHARTS ENDS HERE -->
+        </div>
+    </main>

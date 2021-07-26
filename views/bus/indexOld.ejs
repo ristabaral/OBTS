@@ -1,0 +1,54 @@
+<%- include('../partials/operatorNav.ejs') %>
+
+    <div style="display: flex;justify-content: space-between;">
+        <div>
+            <h1>All buses</h1>
+        </div>
+        <div style="padding-top: 10px;">
+            <a href="/api/dashboard/addbus"><button>Add Bus</button></a>
+        </div>
+    </div>
+
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th scope="col">#</th>
+                <th scope="col">Bus No.</th>
+                <th scope="col">Bus Name</th>
+                <th scope="col">Type</th>
+                <th scope="col">No. of Seats</th>
+                <th scope="col">Scheduled</th>
+                <th scope="col">Actions</th>
+            </tr>
+        </thead>
+        <% documents.forEach((doc, index)=>{ %>
+            <tbody>
+                <tr>
+                    <th scope="row">
+                        <%= index+1 %>
+                    </th>
+                    <td>
+                        <%= doc.busNo %>
+                    </td>
+                    <td>
+                        <%= doc.busName %>
+                    </td>
+                    <td>
+                        <%= doc.type %>
+                    </td>
+                    <td>
+                        <%= doc.numOfSeats %>
+                    </td>
+                    <td>
+                        <%= doc.scheduled %>
+                    </td>
+                    <td>
+                        <a href="#"><button>View</button></a>
+                        <a href="/api/dashboard/buses/update/<%= doc._id %>"><button>Edit</button></a>
+                        <a href="/api/dashboard/buses/delete/<%= doc._id %>"><button>Delete</button></a>
+                    </td>
+                </tr>
+            </tbody>
+            <% }) %>
+    </table>

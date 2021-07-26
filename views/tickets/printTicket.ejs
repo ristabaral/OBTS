@@ -1,0 +1,236 @@
+<style>
+    @import url("https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css");
+    @import url("https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css");
+    body {
+        background-color: #ffffff;
+        background-image: linear-gradient(315deg, #ffffff 0%, #d7e1ec 74%);
+        background-repeat: no-repeat;
+    }
+    
+    .pbtn {
+        background-color: rgb(255, 7, 110);
+        /* margin-left: 200px; */
+        color: #ffffff;
+        cursor: pointer;
+        height: 20px;
+        width: 200px;
+        font-size: 19px;
+        padding-top: 20px;
+        padding-bottom: 40px;
+        border: none;
+    }
+    
+    .alltickets {
+        background-image: url('/images/bus.jpg');
+        /* display: grid;
+        grid-template-columns:1fr; */
+        justify-content: center;
+        text-align: center;
+        align-items: center;
+        margin: 1px 0;
+        margin-left: 5px;
+        /* position: absolute;
+        top: 2px;
+        left: 580px; */
+    }
+    
+    .card {
+        display: grid;
+        grid-template-columns: 300px;
+        grid-template-rows: 180px 240px 60px;
+        grid-template-areas: "image" "text" "stats";
+        border-radius: 18px;
+        background: white;
+        box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.9);
+        box-sizing: border-box;
+        font-family: Arial, Helvetica, sans-serif;
+        text-align: center;
+        width: 300px;
+        float: left;
+        margin-top: 0px;
+        /* position: absolute;
+        top: 0;
+        left: 550px; */
+    }
+    
+    .bus {
+        display: flex;
+        margin-bottom: 2px;
+    }
+    
+    .busDetail {
+        margin: 0px;
+        font-size: 16px;
+        padding: 4px;
+    }
+    
+    .card-text {
+        grid-area: text;
+        margin: 0px;
+    }
+    
+    .card-text .date {
+        color: rgb(255, 7, 110);
+        font-size: 14px;
+    }
+    
+    .card-text h2 {
+        margin-top: -15px;
+        color: rgb(255, 7, 110);
+        font-size: 16px;
+    }
+    
+    .card-text h3 {
+        margin-top: -40px;
+        color: rgb(255, 7, 110);
+        font-size: 14px;
+    }
+    
+    .card-text h4 {
+        margin-top: -20px;
+        margin-bottom: 15px;
+        color: rgb(255, 7, 110);
+        font-size: 14px;
+    }
+    
+    .card-text .place {
+        margin-top: -10px;
+        color: rgb(255, 7, 110);
+        font-size: 14px;
+    }
+    
+    .card-text .city {
+        color: rgb(255, 7, 110);
+        padding: 2px;
+        text-align: left;
+        font-size: 24px;
+    }
+    
+    .arrow {
+        margin-top: -30px;
+        color: rgb(255, 7, 110);
+    }
+    
+    .city1 {
+        color: rgb(255, 7, 110);
+        padding: 2px;
+        text-align: right;
+        font-size: 24px;
+        margin-top: -33px;
+    }
+    
+    .card-text .float {
+        color: rgb(255, 7, 110);
+        width: 30%;
+        float: left;
+        padding: 2px;
+        margin-top: 7px;
+        margin-bottom: 10px;
+        text-decoration: wavy;
+    }
+    
+    .seat {
+        margin-left: 20px;
+    }
+    
+    .card-text .float i {
+        margin-left: 10px;
+    }
+    
+    .card-stats {
+        grid-area: stats;
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr;
+        grid-template-rows: 1fr;
+    }
+    
+    .stat {
+        font-size: 20px;
+        letter-spacing: 2px;
+        display: flex;
+        justify-content: center;
+        flex-direction: column;
+        color: white;
+        padding: 10px;
+        background: rgb(255, 7, 110);
+        border-bottom-left-radius: 15px;
+        border-bottom-right-radius: 15px;
+    }
+    
+    .card:hover {
+        transform: scale(1.15);
+        box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.6);
+    }
+    
+    .card {
+        transition: 0.5s ease;
+        cursor: pointer;
+        margin: 30px;
+    }
+</style>
+<div class="alltickets">
+    <div class="card">
+
+        <div class="card-image">
+            <img src="<%= ticket.image %>" width="100%" alt="image">
+        </div>
+        <div class="card-text">
+
+            <div class="bus">
+                <div class="busDetail">
+                    <span>Bus Name</span>
+                    <%= ticket.busName %>
+                </div>
+
+                <div class="busDetail">
+                    <span>Bus Number</span>
+                    <%= ticket.busNo %>
+                </div>
+            </div>
+
+            <span class="date">Passenger Name</span>
+            <h2>
+                <%= ticket.pname.toUpperCase() %>
+            </h2><br>
+            <h3>Booking ID:
+                <%= ticket.booking %>
+            </h3><br>
+            <h4>Price:
+                <%= ticket.price %>
+            </h4>
+            <div class="place" style="justify-content: space-around;">
+
+                <div class="city" style="display: inline;">
+                    <%= ticket.from %>
+                </div>
+
+                <div class="arrow" style="display: inline;"><i class="fa fa-exchange fa-2x" aria-hidden="true"></i></div>
+
+                <div class="city1" style="display: inline;">
+                    <%= ticket.to %>
+                </div>
+            </div>
+            <div class="seat">
+                <div class="float">Date
+                    <i class="fa fa-calendar"></i><br>
+                    <%= ticket.date %>
+                </div>
+                <div class="float">
+                    Time<i class="fa fa-clock-o"></i><br>
+                    <%= ticket.time %>
+                </div>
+                <div class="float">
+                    Seat<i class="fa fa-sitemap"></i><br>
+                    <%= ticket.seat %>
+                </div>
+            </div>
+
+        </div>
+        <div class="stat">
+
+            <a href="<%= path %>" class="btn btn-danger" download>Download Ticket</a>
+            <!-- Print -->
+        </div>
+    </div>
+</div>
+</div>

@@ -1,0 +1,165 @@
+<%- include('./partials/operatorNav.ejs') %>
+
+    <% if(message.length > 0){ %>
+        <div class="alert alert-success">
+            <%= message %>
+        </div>
+        <% } %>
+
+            <div class="bg-img">
+                <div class="container-xl">
+                    <div class="table-responsive">
+                        <div class="table-wrapper">
+                            <div class="table-title">
+                                <div class="row">
+                                    <div class="col-sm-8">
+                                        <!-- <a href="/api/dashboard/addschedule" class="btn btn-success" data-toggle="modal"><i class="material-icons">&#xE147;</i> <span>Add New Schedule
+                            </span></a> -->
+                                    </div>
+                                    <form class="search">
+                                        <div class="col-sm-4">
+                                            <div class="search-box">
+                                                <i class="material-icons">&#xE8B6;</i>
+                                                <input type="text" class="form-control" style="width: 150px;" id="myInput" onkeyup="myFunction()" placeholder="Search&hellip;">
+                                            </div>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                            <table id="myTable" class="table table-striped table-bordered table-sm" cellspacing="0" width="100%">
+                                <thead>
+                                    <tr class="header">
+                                        <th scope="col">SN</th>
+                                        <th scope="col">Bus Number</th>
+                                        <th scope="col">Booker Name</th>
+                                        <th scope="col">Route</th>
+                                        <th scope="col">Booking Date</th>
+                                        <th scope="col">Boarding Point</th>
+                                        <th scope="col">No Of Seats</th>
+                                        <th scope="col">Amount</th>
+                                        <th scope="col">Payment Status</th>
+                                    </tr>
+                                </thead>
+                                <% documents.forEach((doc,index)=>{ %>
+                                    <tbody>
+                                        <tr>
+                                            <td>
+                                                <%= index+1 %>
+                                            </td>
+                                            <td>
+                                                <%= doc.busNo %>
+                                            </td>
+                                            <td>
+                                                <%= doc.name %>
+                                            </td>
+                                            <td>
+                                                <%= doc.schedule %>
+                                            </td>
+                                            <td>
+                                                <%= doc.date %>
+                                            </td>
+                                            <td>
+                                                <%= doc.checkpoint %>
+                                            </td>
+                                            <td>
+                                                <%= doc.noOfSeats %>
+                                            </td>
+                                            <td>
+                                                <%= doc.amount %>
+                                            </td>
+                                            <td>
+                                                <%= doc.status %>
+                                            </td>
+                                            <td>
+
+                                                <a href="/api/dashboard/bookings/update/<%= doc._id %>" class="edit" title="Edit" data-toggle="modal"><i class="material-icons">&#xE254;</i></a>
+                                                <a href="/api/dashboard/bookings/delete/<%= doc._id %>" class="delete" title="Delete" data-toggle="tooltip"><i class="material-icons">&#xE872;</i></a>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                    <% }) %>
+                            </table>
+                            <div class="clearfix">
+
+                                <% if (pages > 0) { %>
+                                    <ul class="pagination text-center">
+                                        <% if (current == 1) { %>
+                                            <li class="disabled"><a>First</a></li>
+                                            <% } else { %>
+                                                <li><a href="/api/dashboard/bookings/1">First</a></li>
+                                                <% } %>
+                                                    <% var i = (Number(current) > 5 ? Number(current) - 4 : 1) %>
+                                                        <% if (i !== 1) { %>
+                                                            <li class="disabled"><a>...</a></li>
+                                                            <% } %>
+                                                                <% for (; i <= (Number(current) + 4) && i <= pages; i++) { %>
+                                                                    <% if (i == current) { %>
+                                                                        <li class="active">
+                                                                            <a>
+                                                                                <%= i %>
+                                                                            </a>
+                                                                        </li>
+                                                                        <% } else { %>
+                                                                            <li>
+                                                                                <a href="/api/dashboard/bookings/<%= i %>">
+                                                                                    <%= i %>
+                                                                                </a>
+                                                                            </li>
+                                                                            <% } %>
+                                                                                <% if (i == Number(current) + 4 && i < pages) { %>
+                                                                                    <li class="disabled"><a>...</a></li>
+                                                                                    <% } %>
+                                                                                        <% } %>
+                                                                                            <% if (current == pages) { %>
+                                                                                                <li class="disabled"><a>Last</a></li>
+                                                                                                <% } else { %>
+                                                                                                    <li><a href="/api/dashboard/bookings/<%= pages %>">Last</a></li>
+                                                                                                    <% } %>
+                                    </ul>
+                                    <% } %>
+
+
+
+                                        <!-- <ul class="pagination">
+                                <li class="page-item disabled"><a href="#"><i class="fa fa-angle-double-left"></i></a></li>
+                                <li class="page-item"><a href="#" class="page-link">1</a></li>
+                                <li class="page-item"><a href="#" class="page-link">2</a></li>
+                                <li class="page-item active"><a href="#" class="page-link">3</a></li>
+                                <li class="page-item"><a href="#" class="page-link">4</a></li>
+                                <li class="page-item"><a href="#" class="page-link">5</a></li>
+                                <li class="page-item"><a href="#" class="page-link"><i class="fa fa-angle-double-right"></i></a></li>
+                            </ul> -->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <script>
+                function myFunction() {
+                    // Declare variables
+                    var input, filter, table, tr, td, i, txtValue;
+                    input = document.getElementById("myInput");
+                    filter = input.value.toUpperCase();
+                    table = document.getElementById("myTable");
+                    tr = table.getElementsByTagName("tr");
+
+                    // Loop through all table rows, and hide those who don't match the search query
+                    for (i = 0; i < tr.length; i++) {
+                        td = tr[i].getElementsByTagName("td")[1];
+                        console.log('here', td)
+                        if (td) {
+                            txtValue = td.textContent || td.innerText;
+                            if (txtValue.toUpperCase().indexOf(filter) > -1) {
+                                tr[i].style.display = "";
+                            } else {
+                                tr[i].style.display = "none";
+                            }
+                        }
+                    }
+                }
+            </script>
+
+            </body>
+
+            </html>

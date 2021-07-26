@@ -1,0 +1,545 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <!-- CSS only -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-wEmeIV1mKuiNpC+IOBjI7aAzPcEZeedi5yW5f2yOq55WWLwNGmvvx4Um1vskeMj0" crossorigin="anonymous">
+    <link href="/your-path-to-fontawesome/css/fontawesome.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-p34f1UUtsS3wqzfto5wAAmdvj+osOnFyQFpp4Ua3gs/ZVWx6oOypYoCJhGGScy+8" crossorigin="anonymous"></script>
+    <script src="https://kit.fontawesome.com/dea0b3fd38.js" crossorigin="anonymous"></script>
+
+    <style>
+        .popup .content {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -150%) scale(0);
+            width: 300px;
+            height: 450px;
+            z-index: 2;
+            text-align: center;
+            padding: 20px;
+            border-radius: 20px;
+            background-image: linear-gradient(315deg, #eec0c6 0%, #7ee8fa 74%);
+            z-index: 1;
+        }
+        
+        .popup .close-btn {
+            position: absolute;
+            right: 20px;
+            top: 20px;
+            width: 30px;
+            height: 30px;
+            color: black;
+            font-size: 30px;
+            border-radius: 50%;
+            padding: 2px 5px 3px 5px;
+            background: #e6e6fa;
+            justify-content: center;
+            text-align: center;
+        }
+        
+        .popup.active .content {
+            transition: all 300ms ease-in-out;
+            transform: translate(-50%, -50%) scale(1);
+        }
+        
+        h1 {
+            text-align: center;
+            font-size: 32px;
+            font-weight: 600;
+            padding-top: 20px;
+            padding-bottom: 10px;
+        }
+        
+        .input-field .validate {
+            padding: 20px;
+            font-size: 16px;
+            border-radius: 10px;
+            border: none;
+            margin-bottom: 15px;
+            color: #000000;
+            background: #f8f8ff;
+            outline: none;
+        }
+        
+        .first-button {
+            color: white;
+            font-size: 18px;
+            font-weight: 500;
+            padding: 30px 50px;
+            border-radius: 40px;
+            border: none;
+            position: absolute;
+            top: 50%;
+            left: 20%;
+            transform: translate(-50%, -50%);
+            background: #262626;
+            box-shadow: 18px 18px 25px #1e1e1e, -15px -15px 25px #1e1e1e;
+            transition: box-shadow .35s ease !important;
+            outline: none;
+        }
+        
+        .second-button {
+            color: #ffffff;
+            font-size: 18px;
+            font-weight: 500;
+            margin-top: 20px;
+            padding: 20px 30px;
+            border-radius: 40px;
+            border: none;
+            background: #21abcd;
+            transition: box-shadow .35s ease !important;
+            outline: none;
+        }
+        
+        .second-button:active {
+            background: linear-gradient(145deg, #222222, #292929);
+            box-shadow: 5px 5px 10px #262626, -5px -5px 10px #262626;
+            border: none;
+            outline: none;
+        }
+        
+        .neggro {
+            z-index: 1;
+            width: 825px;
+            height: 400px;
+            background-size: cover;
+            background-image: url("https://wallpapercave.com/wp/wp4366488.jpg");
+            transform: translate(0%, 0%);
+            animation: dark 20s infinite linear;
+            animation-play-state: running;
+            animation-direction: alternate;
+        }
+        
+        @keyframes dark {
+            0% {
+                background-image: url("https://mountmakalu.com.np/customer/slider/mountMakalu/img2.jpg");
+            }
+            25% {
+                background-image: url("https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftahalkabus.com.np%2Fcustomer%2FbussewaUpload%2FMaitriBhagya_1575874717129_1582133390023.jpg&f=1&nofb=1");
+            }
+            50% {
+                background-image: url("https://www.wallpapertip.com/wmimgs/71-717150_sport-bike-wallpaper-4k.jpg");
+            }
+            75% {
+                background-image: url("https://images.pexels.com/photos/2549941/pexels-photo-2549941.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500");
+            }
+            100% {
+                background-image: url("https://www.kolpaper.com/wp-content/uploads/2020/12/Dirt-Bike-Wallpaper.jpg");
+            }
+        }
+        
+        .nav-link:hover {
+            text-decoration: underline;
+            cursor: default;
+        }
+        
+        .bus {
+            background-color: #b8c6db;
+            background-image: linear-gradient(315deg, #b8c6db 0%, #f5f7fa 74%);
+            border-radius: 2px;
+            max-width: 480px;
+            z-index: 1;
+            float: right;
+            position: relative;
+            border-left: 4px solid white;
+            cursor: default;
+        }
+        
+        .col-12 {
+            margin-top: 95px;
+            width: 600px;
+        }
+        
+        #queen {
+            width: 450px;
+            position: relative;
+            bottom: 2px;
+            left: 2px;
+            top: 92px;
+        }
+        
+        .nibba {
+            width: 400px;
+        }
+        
+        .sagar {
+            display: flex;
+            justify-content: space-between;
+        }
+        
+        #advantage {
+            display: flex;
+        }
+        /* The popup form - hidden by default */
+        
+        #hell {
+            text-decoration: none;
+        }
+        
+        .bank img {
+            height: 200px;
+            width: 200px;
+        }
+        
+        .bank {
+            list-style: none;
+            display: flex;
+            justify-content: center;
+        }
+        
+        em {
+            position: relative;
+            bottom: 11px;
+        }
+    </style>
+</head>
+
+<body>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <div class="container-fluid">
+            <i class="fas fa-bus"></i><a class="navbar-brand" href="#">YaTaYAT</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <a class="nav-link active" onclick="togglePopup()" aria-current="page">Register</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Buy ticket!</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Call us(Butwal: 9821970689)</a>
+                    </li>
+
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <div class='sagar'>
+        <div class="neggro">
+
+        </div>
+
+
+
+        <div class="bus">
+            <p>Leaving from</p>
+            <form autocomplete="off" action="/action_page.php">
+                <div class="autocomplete" style="width:300px;">
+                    <input id="myInput" class="nibba" placeholder="Enter Source City (Eg:Pokhara" type="text" name="myCountry">
+                </div>
+            </form>
+            <p>Going Destination</p>
+            <input type="text" list="datalist" onkeyup="ac(this.value)" class="nibba" placeholder="Enter Destination City (Eg:Pokhara">
+            <datalist id="datalist">
+     <option value="Delhi"></option>
+        <option value="Ahemdabad"></option>
+        <option value="Punjab"></option>
+        <option value="Uttar Pradesh"></option>
+        <option value="Himachal Pradesh"></option>
+        <option value="Karnatka"></option>
+        <option value="Kerela"></option>
+        <option value="Maharashtra"></option>
+        <option value="Gujrat"></option>
+        <option value="Rajasthan"></option>
+        <option value="Bihar"></option>
+        <option value="Tamil Nadu"></option>
+        <option value="Haryana"></option>
+          
+        <!-- This data list will be edited through javascript     -->
+        </datalist>
+            <p>Travel Date </p>
+            <input type="date">
+            <p>Select Shift</p>
+            <input type="checkbox">Both
+            <input type="checkbox">Day
+            <input type="checkbox">Night
+            <br>
+            <button id="queen" type="submit" width="200px" class="btn btn-primary">Search buses</button>
+        </div>
+    </div>
+    <hr>
+    </br>
+    <div class="aw main-body">
+        <div class="ah heading-1 main-header-family rest1">
+            <div class="promise-head-main"> Why Book With Us?</div>
+        </div>
+        <div class="ad rest1">
+
+        </div>
+        <div class="clearfix aa our-promise-blocks" id="advantage">
+            <div class="fl rest1 appear-first">
+                <div class="imgCont rest1 animate">
+                    <img src=https://s1.rdbuz.com/Images/webplatform/rbdotcom/multiple_bus_service.svg height="90" />
+                </div>
+                <div class="tilleBlock rest1 animate">
+                    Multiple Bus Services
+                </div>
+                <div class="second-level-heading descCont rest1 animate">
+                    Choose from various bus services, coach companies and your preferred seat.
+                </div>
+            </div>
+            <div class="fl rest1 appear-second">
+                <div class="imgCont rest1 animate">
+                    <img src=https://s1.rdbuz.com/Images/webplatform/rbdotcom/secured%20payments.svg height="100" />
+                </div>
+                <div class="tilleBlock rest1 animate">
+                    Secured Payments
+                </div>
+                <div class="second-level-heading descCont rest1 animate">
+                    redBus has the highest security standards and keeps your information and purchases completely safe and secure.
+                </div>
+            </div>
+            <div class="fl rest1 appear-third">
+                <div class="imgCont rest1 animate">
+                    <img src=https://s1.rdbuz.com/Images/webplatform/rbdotcom/global_coverage.svg height="90" />
+                </div>
+                <div class="tilleBlock rest1 animate">
+                    Global Coverage
+                </div>
+                <div class="second-level-heading descCont rest1 animate">
+                    We constantly add bus supply for different countries. Get all your bus travel needs covered under one roof
+                </div>
+            </div>
+            <div class="fl rest1 appear-fourth">
+                <div class="imgCont rest1 animate">
+                    <img src=https://s1.rdbuz.com/Images/webplatform/rbdotcom/customer_support.svg height="90" />
+                </div>
+                <div class="tilleBlock rest1 animate">
+                    Superior Customer Support
+                </div>
+                <div class="second-level-heading descCont rest1 animate">
+                    Our customer support will ensure to service all your queries.
+                </div>
+            </div>
+        </div>
+    </div>
+    </section>
+    </div>
+    <div class="popup" id="popup-1">
+        <div class="content">
+            <div class="close-btn" onclick="togglePopup()"><em>&times;</em>
+            </div>
+
+            <h1>Sign in</h1>
+            <hr>
+            <div class="input-field"><input placeholder="Email" class="validate"></div>
+            <div class="input-field"><input type="password" placeholder="Password" class="validate"></div>
+            <button class="second-button">Sign in</button>
+            <p>Don't have an account? <a href="signup1.html" id="hell">Sign Up</a></p>
+
+
+        </div>
+
+        <script>
+            function togglePopup() {
+                document.getElementById("popup-1")
+                    .classList.toggle("active");
+            }
+
+            function autocomplete(inp, arr) {
+                /*the autocomplete function takes two arguments,
+                the text field element and an array of possible autocompleted values:*/
+                var currentFocus;
+                /*execute a function when someone writes in the text field:*/
+                inp.addEventListener("input", function(e) {
+                    var a, b, i, val = this.value;
+                    /*close any already open lists of autocompleted values*/
+                    closeAllLists();
+                    if (!val) {
+                        return false;
+                    }
+                    currentFocus = -1;
+                    /*create a DIV element that will contain the items (values):*/
+                    a = document.createElement("DIV");
+                    a.setAttribute("id", this.id + "autocomplete-list");
+                    a.setAttribute("class", "autocomplete-items");
+                    /*append the DIV element as a child of the autocomplete container:*/
+                    this.parentNode.appendChild(a);
+                    /*for each item in the array...*/
+                    for (i = 0; i < arr.length; i++) {
+                        /*check if the item starts with the same letters as the text field value:*/
+                        if (arr[i].substr(0, val.length).toUpperCase() == val.toUpperCase()) {
+                            /*create a DIV element for each matching element:*/
+                            b = document.createElement("DIV");
+                            /*make the matching letters bold:*/
+                            b.innerHTML = "<strong>" + arr[i].substr(0, val.length) + "</strong>";
+                            b.innerHTML += arr[i].substr(val.length);
+                            /*insert a input field that will hold the current array item's value:*/
+                            b.innerHTML += "<input type='hidden' value='" + arr[i] + "'>";
+                            /*execute a function when someone clicks on the item value (DIV element):*/
+                            b.addEventListener("click", function(e) {
+                                /*insert the value for the autocomplete text field:*/
+                                inp.value = this.getElementsByTagName("input")[0].value;
+                                /*close the list of autocompleted values,
+                                (or any other open lists of autocompleted values:*/
+                                closeAllLists();
+                            });
+                            a.appendChild(b);
+                        }
+                    }
+                });
+                /*execute a function presses a key on the keyboard:*/
+                inp.addEventListener("keydown", function(e) {
+                    var x = document.getElementById(this.id + "autocomplete-list");
+                    if (x) x = x.getElementsByTagName("div");
+                    if (e.keyCode == 40) {
+                        /*If the arrow DOWN key is pressed,
+                        increase the currentFocus variable:*/
+                        currentFocus++;
+                        /*and and make the current item more visible:*/
+                        addActive(x);
+                    } else if (e.keyCode == 38) { //up
+                        /*If the arrow UP key is pressed,
+                        decrease the currentFocus variable:*/
+                        currentFocus--;
+                        /*and and make the current item more visible:*/
+                        addActive(x);
+                    } else if (e.keyCode == 13) {
+                        /*If the ENTER key is pressed, prevent the form from being submitted,*/
+                        e.preventDefault();
+                        if (currentFocus > -1) {
+                            /*and simulate a click on the "active" item:*/
+                            if (x) x[currentFocus].click();
+                        }
+                    }
+                });
+
+                function addActive(x) {
+                    /*a function to classify an item as "active":*/
+                    if (!x) return false;
+                    /*start by removing the "active" class on all items:*/
+                    removeActive(x);
+                    if (currentFocus >= x.length) currentFocus = 0;
+                    if (currentFocus < 0) currentFocus = (x.length - 1);
+                    /*add class "autocomplete-active":*/
+                    x[currentFocus].classList.add("autocomplete-active");
+                }
+
+                function removeActive(x) {
+                    /*a function to remove the "active" class from all autocomplete items:*/
+                    for (var i = 0; i < x.length; i++) {
+                        x[i].classList.remove("autocomplete-active");
+                    }
+                }
+
+                function closeAllLists(elmnt) {
+                    /*close all autocomplete lists in the document,
+                    except the one passed as an argument:*/
+                    var x = document.getElementsByClassName("autocomplete-items");
+                    for (var i = 0; i < x.length; i++) {
+                        if (elmnt != x[i] && elmnt != inp) {
+                            x[i].parentNode.removeChild(x[i]);
+                        }
+                    }
+                }
+                /*execute a function when someone clicks in the document:*/
+                document.addEventListener("click", function(e) {
+                    closeAllLists(e.target);
+                });
+            }
+
+            /*An array containing all the country names in the world:*/
+            var countries = ["Afghanistan", "Albania", "Algeria", "Andorra", "Angola", "Anguilla", "Antigua & Barbuda", "Argentina", "Armenia", "Aruba", "Australia", "Austria", "Azerbaijan", "Bahamas", "Bahrain", "Bangladesh", "Barbados", "Belarus", "Belgium", "Belize", "Benin", "Bermuda", "Bhutan", "Bolivia", "Bosnia & Herzegovina", "Botswana", "Brazil", "British Virgin Islands", "Brunei", "Bulgaria", "Burkina Faso", "Burundi", "Cambodia", "Cameroon", "Canada", "Cape Verde", "Cayman Islands", "Central Arfrican Republic", "Chad", "Chile", "China", "Colombia", "Congo", "Cook Islands", "Costa Rica", "Cote D Ivoire", "Croatia", "Cuba", "Curacao", "Cyprus", "Czech Republic", "Denmark", "Djibouti", "Dominica", "Dominican Republic", "Ecuador", "Egypt", "El Salvador", "Equatorial Guinea", "Eritrea", "Estonia", "Ethiopia", "Falkland Islands", "Faroe Islands", "Fiji", "Finland", "France", "French Polynesia", "French West Indies", "Gabon", "Gambia", "Georgia", "Germany", "Ghana", "Gibraltar", "Greece", "Greenland", "Grenada", "Guam", "Guatemala", "Guernsey", "Guinea", "Guinea Bissau", "Guyana", "Haiti", "Honduras", "Hong Kong", "Hungary", "Iceland", "India", "Indonesia", "Iran", "Iraq", "Ireland", "Isle of Man", "Israel", "Italy", "Jamaica", "Japan", "Jersey", "Jordan", "Kazakhstan", "Kenya", "Kiribati", "Kosovo", "Kuwait", "Kyrgyzstan", "Laos", "Latvia", "Lebanon", "Lesotho", "Liberia", "Libya", "Liechtenstein", "Lithuania", "Luxembourg", "Macau", "Macedonia", "Madagascar", "Malawi", "Malaysia", "Maldives", "Mali", "Malta", "Marshall Islands", "Mauritania", "Mauritius", "Mexico", "Micronesia", "Moldova", "Monaco", "Mongolia", "Montenegro", "Montserrat", "Morocco", "Mozambique", "Myanmar", "Namibia", "Nauro", "Nepal", "Netherlands", "Netherlands Antilles", "New Caledonia", "New Zealand", "Nicaragua", "Niger", "Nigeria", "North Korea", "Norway", "Oman", "Pakistan", "Palau", "Palestine", "Panama", "Papua New Guinea", "Paraguay", "Peru", "Philippines", "Poland", "Portugal", "Puerto Rico", "Qatar", "Reunion", "Romania", "Russia", "Rwanda", "Saint Pierre & Miquelon", "Samoa", "San Marino", "Sao Tome and Principe", "Saudi Arabia", "Senegal", "Serbia", "Seychelles", "Sierra Leone", "Singapore", "Slovakia", "Slovenia", "Solomon Islands", "Somalia", "South Africa", "South Korea", "South Sudan", "Spain", "Sri Lanka", "St Kitts & Nevis", "St Lucia", "St Vincent", "Sudan", "Suriname", "Swaziland", "Sweden", "Switzerland", "Syria", "Taiwan", "Tajikistan", "Tanzania", "Thailand", "Timor L'Este", "Togo", "Tonga", "Trinidad & Tobago", "Tunisia", "Turkey", "Turkmenistan", "Turks & Caicos", "Tuvalu", "Uganda", "Ukraine", "United Arab Emirates", "United Kingdom", "United States of America", "Uruguay", "Uzbekistan", "Vanuatu", "Vatican City", "Venezuela", "Vietnam", "Virgin Islands (US)", "Yemen", "Zambia", "Zimbabwe"];
+
+            /*initiate the autocomplete function on the "myInput" element, and pass along the countries array as possible autocomplete values:*/
+            autocomplete(document.getElementById("myInput"), countries);
+            var tags = [
+                "Delhi",
+                "Ahemdabad",
+                "Punjab",
+                "Uttar Pradesh",
+                "Himachal Pradesh",
+                "Karnatka",
+                "Kerela",
+                "Maharashtra",
+                "Gujrat",
+                "Rajasthan",
+                "Bihar",
+                "Tamil Nadu",
+                "Haryana"
+            ];
+
+            /*list of available options*/
+            var n = tags.length; //length of datalist tags    
+
+            function ac(value) {
+
+
+                document.getElementById('datalist').innerHTML = '';
+                //setting datalist empty at the start of function
+                //if we skip this step, same name will be repeated
+
+                l = value.length;
+                //input query length
+                for (var i = 0; i < n; i++) {
+                    if (((tags[i].toLowerCase()).indexOf(value.toLowerCase())) > -1) {
+                        //comparing if input string is existing in tags[i] string
+
+                        var node = document.createElement("option");
+                        var val = document.createTextNode(tags[i]);
+                        node.appendChild(val);
+
+                        document.getElementById("datalist").appendChild(node);
+                        //creating and appending new elements in data list
+                    }
+
+                }
+            }
+        </script>
+        <script type="text/javascript">
+            var tags = [
+                "Delhi",
+                "Ahemdabad",
+                "Punjab",
+                "Uttar Pradesh",
+                "Himachal Pradesh",
+                "Karnatka",
+                "Kerela",
+                "Maharashtra",
+                "Gujrat",
+                "Rajasthan",
+                "Bihar",
+                "Tamil Nadu",
+                "Haryana"
+            ];
+
+            /*list of available options*/
+            var n = tags.length; //length of datalist tags    
+
+            function ac(value) {
+                document.getElementById('datalist').innerHTML = '';
+                //setting datalist empty at the start of function
+                //if we skip this step, same name will be repeated
+
+                l = value.length;
+                //input query length
+                for (var i = 0; i < n; i++) {
+                    if (((tags[i].toLowerCase()).indexOf(value.toLowerCase())) > -1) {
+                        //comparing if input string is existing in tags[i] string
+
+                        var node = document.createElement("option");
+                        var val = document.createTextNode(tags[i]);
+                        node.appendChild(val);
+
+                        document.getElementById("datalist").appendChild(node);
+                        //creating and appending new elements in data list
+                    }
+                }
+            }
+        </script>
+
+
+
+</body>
+
+</html>
